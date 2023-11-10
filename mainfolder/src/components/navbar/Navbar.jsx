@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BookOpenIcon, Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import person from '../../assets/person.png';
+import { Link } from 'react-router-dom';
 import OtherNav from './OtherNav';
 
 const Header = () => {
@@ -33,11 +34,11 @@ const Header = () => {
     return (
         <>
             <div className='shadow-md w-full fixed top-0 left-0 z-50'>
-                <div className='md:flex items-center justify-between bg-black md:px-10 px-7 py-8 z-50 '>
+                <div className='md:flex items-center justify-between bg-black md:px-10 px-7 py-8 z-50 overflow-x-hidden '>
                     {/* logo section */}
                     <div className='font-bold text-2xl cursor-pointer flex items-center gap-4'>
                         <BookOpenIcon className='w-7 h-7 text-blue-600' />
-                        <span className='text-gray-200'>Travilio</span>
+                        <Link to='/'><span className='text-gray-200'>Travilio</span></Link>
                     </div>
                     {/* Menu icon */}
                     <div onClick={() => setOpen(!open)} className='absolute right-8 top-6 cursor-pointer md:hidden w-7 h-7 text-white'>

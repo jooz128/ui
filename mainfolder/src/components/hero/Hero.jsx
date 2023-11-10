@@ -14,7 +14,7 @@
         };
 
         return (
-            <div className="" style={{'margin-top':'260px'}}> {/* Adjusted the margin top to move the Hero section below the Navbar */}
+            <div className="" style={{'margin-top':'248px'}}> {/* Adjusted the margin top to move the Hero section below the Navbar */}
                 <Slider {...settings}>
                     <div>
                         <img
@@ -45,7 +45,7 @@
                         />
                     </div>
                 </Slider>
-                <div className="absolute bottom-0 left-0 p-4  ">
+                <div className="absolute bottom-0 left-0 p-4 " style={{top:'110%'}}>
                     <button className="bg-gray-300 text-red-500 px-4 py-4 rounded-lg font-bold text-2xl">Book AT BEST PRICES</button>
                 </div>
             </div>

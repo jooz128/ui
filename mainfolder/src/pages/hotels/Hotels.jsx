@@ -1,19 +1,11 @@
-import React, { useContext,useState, useEffect } from 'react';
-import { InputContext } from '../../context/InputContext';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/Footer';
 import axios from 'axios';
 
 
-const Activities = () => {
-  const {
-    selectedCity,
-    selectedStartDate,
-    selectedEndDate,
-    selectedGuests,
-  } = useContext(InputContext);
-  
+const Hotels = () => {
   const [activities, setActivities] = useState([]);
   const [selectedSortOption, setSelectedSortOption] = useState('price_low_to_high');
   const [selectedActivityTypes, setSelectedActivityTypes] = useState([]);
@@ -70,7 +62,7 @@ const Activities = () => {
 
     fetchData();
   
-  }, [selectedCity, selectedStartDate, selectedEndDate, selectedGuests]);
+  }, []);
 
   const handleSortOptionChange = (event) => {
     setSelectedSortOption(event.target.value);
@@ -132,33 +124,21 @@ const Activities = () => {
     ' Destinations',
     'Air Sports',
   ];
-
+  
+  const amenetiesList = [
+    'free cancellation',
+    'Bar club',
+    'Restaurant ',
+    'Pet friendly',
+    'Restaurant',
+    'Pet friendly',
+  ];
 
   return (
     <>
       <Header />
-      <div className="bg-white md:mt-24" style={{ marginTop: '260px' }}>
     
-  <div className="flex justify-center items-center flex-wrap">
-    <button className="border border-red-700 text-red-700 bg-transparent px-2 md:px-4 py-2 m-2 rounded-lg font-semibold">
-      &lt;
-    </button>
-
-    {buttonList.map((button, index) => (
-      <button
-        key={index}
-        className="border border-red-700 text-red-700 bg-transparent px-2 md:px-4 py-2 m-2 rounded-lg font-semibold"
-      >
-        {button}
-      </button>
-    ))}
-
-    <button className="border border-red-700 text-red-700 bg-transparent px-2 md:px-4 py-2 m-2 rounded-lg font-semibold">
-      &gt;
-    </button>
-  </div>
-</div>
-<div className="mt-4 mb-8 pl-4">
+<div className="mt-4 mb-8 pl-4" style={{marginTop:'270px'}}>
   <select
     value={selectedSortOption}
     onChange={handleSortOptionChange}
@@ -178,7 +158,7 @@ const Activities = () => {
             <h2 className="text-xl font-bold mb-2">Filters</h2>
             <hr className="my-4" />
             <div className="mb-4">
-              <h3 className="text-lg font-bold mb-2">Activity Type</h3>
+              <h3 className="text-lg font-bold mb-2">Property Types</h3>
             
               {activityTypes.map((type, index) => (
               <div key={index} className="mb-2 cursor-pointer">
@@ -196,40 +176,20 @@ const Activities = () => {
             </div>
             <hr className="my-4" />
             <div className="mb-4">
-              <h3 className="text-lg font-bold mb-2">Price</h3>
-              <div className="mb-2 cursor-pointer">
-              <label>
-                <input
-                  type="checkbox"
-                  className="mr-2"
-                  value="500 - 1000"
-                  onChange={handlePriceRangeChange}
-                />
-                ₹500 - ₹1000
-              </label>
-            </div>
-            <div className="mb-2 cursor-pointer">
-              <label>
-                <input
-                  type="checkbox"
-                  className="mr-2"
-                  value="1000 - 2000"
-                  onChange={handlePriceRangeChange}
-                />
-                ₹1000 - ₹2000
-              </label>
-            </div>
-            <div className="mb-2 cursor-pointer">
-              <label>
-                <input
-                  type="checkbox"
-                  className="mr-2"
-                  value="2000 or more"
-                  onChange={handlePriceRangeChange}
-                />
-                ₹2000 or more
-              </label>
-            </div>
+              <h3 className="text-lg font-bold mb-2">Amenities</h3>
+            
+              {amenetiesList.map((amenity, index) => (
+              <div key={index} className="mb-2 cursor-pointer">
+                <label>
+                  <input
+                    type="checkbox"
+                    className="mr-2"
+               
+                  />
+                  {amenity}
+                </label>
+              </div>
+            ))}
             </div>
             <hr className="my-4" />
             <div>
@@ -300,11 +260,10 @@ const Activities = () => {
           <h2 className="text-2xl font-bold mb-4 text-red-700">Activities</h2>
          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {filteredActivities.map(activity => (
-            
             <div key={activity.id} className="p-4">
               <div className="bg-white shadow-md rounded-lg p-4">
               {activity.photos && activity.photos.length > 0 ? (
-                <Link key={activity.id} to={`/activitiesdetails/${activity.id}`}><img
+                <Link to='/hotelsdetails'><img
                     src={activity.photos[0].url}
                     alt={activity.name}
                     className="w-full h-48 md:h-64 mb-4 object-cover rounded-lg"
@@ -331,4 +290,4 @@ const Activities = () => {
   );
 };
 
-export default Activities;
+export default Hotels;
