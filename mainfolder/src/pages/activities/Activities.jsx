@@ -139,8 +139,8 @@ const Activities = () => {
       <Header />
       <div className="bg-white md:mt-24" style={{ marginTop: '260px' }}>
     
-  <div className="flex justify-center items-center flex-wrap">
-    <button className="border border-red-700 text-red-700 bg-transparent px-2 md:px-4 py-2 m-2 rounded-lg font-semibold">
+  <div className="flex justify-center items-center flex-wrap activities-button-media ">
+    <button className="  bg-transparent px-2 md:px-4 py-2 m-2 rounded-lg font-semibold  ">
       &lt;
     </button>
 
@@ -153,7 +153,7 @@ const Activities = () => {
       </button>
     ))}
 
-    <button className="border border-red-700 text-red-700 bg-transparent px-2 md:px-4 py-2 m-2 rounded-lg font-semibold">
+    <button className=" bg-transparent px-2 md:px-4 py-2 m-2 rounded-lg font-semibold ">
       &gt;
     </button>
   </div>
@@ -173,8 +173,8 @@ const Activities = () => {
 </div>
       <div className="flex" >
       {/* Left section for filters and sorting */}
-        <div className="w-1/4 bg-gray-100 p-4">
-          <div className="mb-4">
+        <div className="w-8/12 bg-gray-100 p-4 md:w-1/4">
+          <div className="mb-4 ">
             <h2 className="text-xl font-bold mb-2">Filters</h2>
             <hr className="my-4" />
             <div className="mb-4">
@@ -234,21 +234,21 @@ const Activities = () => {
             <hr className="my-4" />
             <div>
               <h3 className="text-lg font-bold mb-2">Your Budget</h3>
-              <div className="flex items-center mb-2">
+              <div className="flex flex-col mb-2 md:flex md:flex-row ">
                 <input
                   type="text"
                   placeholder="Min"
-                  className="border-2 border-gray-400 px-2 py-1 mr-2 rounded-sm"
-                  style={{ width: '80px' }}
+                  className="border-2 border-gray-400 px-2 py-1 mr-2 rounded-sm w-16 md:w-20"
+                  
                 />
                 <span className='mx-2'>To</span>
                 <input
                   type="text"
                   placeholder="Max"
-                  className="border-2 border-gray-400 px-2 py-1 mr-2 rounded-sm"
-                  style={{ width: '80px' }}
+                  className="border-2 border-gray-400 px-2 py-1 mr-2 rounded-sm w-16 md:w-20"
+                  
                 />
-                <button className="bg-black text-white py-2 px-4 rounded">
+                <button className="bg-black text-white py-2 px-4 rounded w-16 md:w-20 ">
                   Go
                 </button>
               </div>

@@ -12,6 +12,7 @@ import otheractivity from '../../assets/otheractivities.png'
 import map from '../../assets/map.png'
 import map2 from '../../assets/map2.png'
 import { Link } from 'react-router-dom';
+import rectangle from '../../assets/Rectangle.png'
 
     const ActivitiesDetailsPage = () => {
         const [showExperience, setShowExperience] = useState(true);
@@ -76,10 +77,10 @@ import { Link } from 'react-router-dom';
         <>
             <Header />
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 shadow-lg" style={{ marginTop: '270px' }}>
-            <div className="mt-10">
+            <div className="mt-10 ">
             <div className="carousel flex items-center justify-center">
           {/* Implement your Carousel component here with the room images */}
-          <img src={roomData.images[0]} alt="Room 1" className="rounded-3xl" />
+          <img src={roomData.images[0]} alt="Room 1" className="rounded-3xl w-2/3" />
            <div className="w-1/3 flex flex-col items-center">
               {roomData.images.slice(1).map((image, index) => (
                         <img
@@ -93,10 +94,16 @@ import { Link } from 'react-router-dom';
 
                            </div>
                     <div className="mt-4 flex items-center justify-between">
-                        <h1 className="text-3xl font-bold text-red-700">{roomData.propertyName}</h1>
-                        <button className="bg-gray-300 hover:bg-gray-500 text-black font-bold text-xl py-6 px-8 rounded">
+                    {agencyData && (
+                        <>
+                        <h1 className="text-2xl font-bold text-red-700 md:text-3xl">{agencyData.name}</h1>
+                        <p></p>
+                        </>
+                    )}
+                      
+                        <button className="bg-gray-300 hover:bg-gray-500 text-black font-bold text-xl py-6 px-8 rounded media-book-now">
                           Book Now
-    </button>
+                           </button>
 
                     </div>
                     <div className="flex items-center mt-2">
@@ -116,23 +123,13 @@ import { Link } from 'react-router-dom';
                         </svg>
                         <p>{roomData.location}</p>
                     </div>
-                    <div className="flex items-center mt-2">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-6 w-6 mr-2"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M5 13l4 4L19 7"
-                            />
-                        </svg>
-                        <p>{roomData.rating} ({roomData.reviews} reviews)</p>
+                    {agencyData && (
+                        <div className="flex items-center mt-2">
+                    <p>Rating : {agencyData.rating}</p>
+                        
                     </div>
+                    ) }
+                    
                     <div className="mt-4">
                         <div className="flex items-center">
                             <svg
@@ -175,13 +172,16 @@ import { Link } from 'react-router-dom';
                             <p>CancellationPolicy : {roomData.cancellationPolicy}</p>
                         </div>
                     </div>
-                    <div className="mt-4">
-                        <p className="text-lg text-gray-700">{roomData.description}</p>
+                    {agencyData && (
+                        <div className="mt-4">
+                        <p className="text-lg text-gray-700">{agencyData.description}</p>
                     </div>
+                    )}
+                    
 
                     <hr className="my-8" />
                     <div className="mt-4 flex items-center justify-center">
-        <div className="border-2 border-grey w-1/2 rounded-full border-opacity-50 flex justify-center">
+        <div className="border-2 border-grey w-1/2 rounded-full border-opacity-50 flex justify-center media-switch-thing">
             <button
                 onClick={handleExperienceClick}
                 className={`text-red-700 font-bold py-2 px-4 rounded-full ${
@@ -202,10 +202,10 @@ import { Link } from 'react-router-dom';
     </div>
 
     {showExperience ? (
-    <div className="flex justify-center mt-5">
-      <div className="flex flex-col items-center mx-4" onClick={() => handleImageClick("Activity 1")}>
+    <div className="flex justify-center mt-5 media-details-images ">
+      <div className="flex flex-col items-center mx-4 " onClick={() => handleImageClick("Activity 1")}>
         <img
-          className={`transition-transform duration-300 ease-in-out block w-56 h-auto cursor-pointer  ${
+          className={`transition-transform duration-300 ease-in-out block w-56 h-auto cursor-pointer   ${
             selectedImages.includes("Activity 1") ? "border-4 border-red-700" : ""
           }`}
           src={smallslided}
@@ -258,12 +258,20 @@ import { Link } from 'react-router-dom';
     </div>
     
         <div className="text-red-700">
-        <h2 className="text-xl font-bold mb-2">Provider Name</h2>
+        <h2 className="text-xl font-bold mb-2 text-center">Provider Name</h2>
         <p className="text-gray-700">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt eros quis nunc
             consequat, vel placerat purus varius.
         </p>
-        </div>
+        </div>  
+        <div className="text-red-700">
+  <h2 className="text-xl font-bold mb-2">Certifications</h2>
+  <div className="flex items-start"> {/* Use items-start to align items to the start (left) */}
+    <img src={rectangle} className="h-16 w-16 mr-4" /> {/* Adjust height and width as needed */}
+    <img src={rectangle} className="h-16 w-16" /> {/* Adjust height and width as needed */}
+  </div>
+</div>
+  
     </div>
     )}    
     <hr className="my-8" />
@@ -301,7 +309,7 @@ import { Link } from 'react-router-dom';
 
 
                     <h2 className="text-2xl font-bold mt-8">Location</h2>
-                    <div className="mt-4 ml-10" style={{ height: '400px' }}>
+                    <div className="mt-4 ml-10 w-full media-map" >
                       <img src={map} alt='Map' />
                       <img src={map2} alt='Map' />
                     </div>
@@ -348,9 +356,9 @@ import { Link } from 'react-router-dom';
         </div>
     </div>
     <div className="mt-8">
-        <div className="border-t border-gray-300 py-4 flex items-start">
+        <div className="border-t border-gray-300 py-4 flex flex-col items-start md:flex md:flex-row">
             <div className="rounded-full h-12 w-12 overflow-hidden">
-                <img src="https://a0.muscache.com/im/pictures/user/421215d1-efdc-4071-af9a-352e74a9958a.jpg?im_w=240" alt="Vibhore" className="h-full w-full object-cover" />
+                <img src="https://a0.muscache.com/im/pictures/user/421215d1-efdc-4071-af9a-352e74a9958a.jpg?im_w=240" alt="Vibhore" className="w-full h-full rounded-full object-cover" />
             </div>
             <div className="ml-4">
                 <h3 className="text-xl font-bold">Vibhore</h3>
@@ -381,7 +389,7 @@ import { Link } from 'react-router-dom';
     </div>
 
     <div className="mt-8">
-        <div className="border-t border-gray-300 py-4 flex items-start">
+    <div className="border-t border-gray-300 py-4 flex flex-col items-start md:flex md:flex-row">
             <div className="rounded-full h-12 w-12 overflow-hidden">
                 <img src="https://a0.muscache.com/im/pictures/user/User-97375290/original/34b5070a-091a-4cb7-9683-49083cc6e10b.jpeg?im_w=240" alt="Vibhore" className="h-full w-full object-cover" />
             </div>
@@ -457,7 +465,7 @@ import { Link } from 'react-router-dom';
                                     <p className="text-red-700 font-bold mt-1">Rs 5499/guest</p>
                                 </div>
                             </div>
-                            <div className="flex items-center justify-end mt-4 space-x-4 mb-6">
+                            <div className="flex items-center justify-end mt-4 space-x-4 mb-6 md:text-sm">
     <button
         className="bg-red-700 hover:bg-red-500 text-white font-bold py-2 px-4 rounded mb-5"
         style={{ backgroundColor: "#b91c1c", color: "white" }}

@@ -47,26 +47,26 @@ import { Link } from 'react-router-dom';
         <>
             <Header />
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 shadow-lg" style={{ marginTop: '270px' }}>
-            <div className="mt-10">
+            <div className="mt-10 media-details">
             <div className="carousel flex items-center justify-center">
           {/* Implement your Carousel component here with the room images */}
-          <img src={roomData.images[0]} alt="Room 1" className="" />
-          <div className="w-1/3 flex flex-col items-center">
+          <img src={roomData.images[0]} alt="Room 1" className=" w-2/3" />
+          <div className="w-1/3 flex flex-col items-center ">
             {roomData.images.slice(1).map((image, index) => (
               <img
                 key={index}
                 src={image}
                 alt={`Room ${index + 2}`}
-                className={`w-full ml-6 ${index === 0 ? 'mb-4' : 'mt-4'}`}
+                className={`w-full ml-6  ${index === 0 ? 'mb-4' : 'mt-4'}`}
               />
             ))}
         </div>
         </div>
                     <div className="mt-4 flex items-center justify-between">
-                        <h1 className="text-3xl font-bold text-red-700">{roomData.propertyName}</h1>
-                        <button className="bg-gray-300 hover:bg-gray-500 text-black font-bold text-xl py-6 px-8 rounded">
-        Book Now
-    </button>
+                        <h1 className="text-2xl font-bold text-red-700 md:text-3xl">{roomData.propertyName}</h1>
+                        <button className="bg-gray-300 hover:bg-gray-500 text-black font-bold text-xl py-6 px-8 rounded media-book-now">
+                          Book Now
+                           </button>
 
                     </div>
                     <div className="flex items-center mt-2">
@@ -150,87 +150,10 @@ import { Link } from 'react-router-dom';
                     </div>
 
                     <hr className="my-8" />
-                    <div className="mt-4 flex items-center justify-center">
-        <div className="border-2 border-grey w-1/2 rounded-full border-opacity-50 flex justify-center">
-            <button
-                onClick={handleExperienceClick}
-                className={`text-red-700 font-bold py-2 px-4 rounded-full ${
-                    showExperience ? 'bg-red-700 text-white' : ''
-                } transition-all duration-300`}
-            >
-                The Experience
-            </button>
-            <button
-                onClick={handleHostClick}
-                className={`text-red-700 font-bold py-2 px-4 rounded-full ml-4 ${
-                    !showExperience ? 'bg-red-700 text-white': ''
-                } transition-all duration-300`}
-            >
-                The Host
-            </button>
-        </div>
-    </div>
+          
 
-        {showExperience ? (
-            <div className="flex justify-center mt-5">
-            <div className="flex flex-col items-center mx-4">
-                <img
-                className="transition-transform duration-300 ease-in-out block w-56 h-auto"
-                src={smallslided}
-                alt="Activity 1"
-                />
-                <p className="text-center text-lg font-bold mt-2">Activity 1</p>
-            </div>
-            <div className="flex flex-col items-center mx-4">
-                <img
-                className="transition-transform duration-300 ease-in-out block w-56 h-auto"
-                src={smallslided}
-                alt="Activity 2"
-                />
-                <p className="text-center text-lg font-bold mt-2">Activity 2</p>
-            </div>
-            <div className="flex flex-col items-center mx-4">
-                <img
-                className="transition-transform duration-300 ease-in-out block w-56 h-auto"
-                src={smallslided}
-                alt="Activity 3"
-                />
-                <p className="text-center text-lg font-bold mt-2">Activity 3</p>
-            </div>
-            </div>
-        ) : (
-            <div className="flex flex-col items-center mt-5 p-6 border-2 border-gray-300 rounded-md shadow-lg">
-    <div className="flex items-center mb-4">
-        <div className="flex items-center">
-        <img src={calendar} alt='calendar Image' /><br/>
-        <p className="ml-2">IMP Feature: French Dinner</p>
-        </div>
-        <div className="flex items-center ml-4">
-        <img src={calendar} alt='calendar Image' /><br/>
-        <p className="ml-2">12 guest maximum</p>
-        </div>
-    </div>
-    <div className="flex items-center mb-4">
-        <div className="flex items-center">
-        <img src={calendar} alt='calendar Image' />
-        <p className="ml-2">Imp Feature</p>
-        </div>
-        <div className="flex items-center ml-4">
-        <img src={calendar} alt='calendar Image' />
-        <p className="ml-2">12 guest maximum</p>
-        </div>
-    </div>
-    
-        <div className="text-red-700">
-        <h2 className="text-xl font-bold mb-2">Provider Name</h2>
-        <p className="text-gray-700">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt eros quis nunc
-            consequat, vel placerat purus varius.
-        </p>
-        </div>
-    </div>
-    )}    
-    <hr className="my-8" />
+       
+   
 
     <h2 className="text-2xl font-bold mt-8">Highlights</h2>
 <div className="mt-4">
@@ -285,7 +208,7 @@ import { Link } from 'react-router-dom';
 
 <div className="mt-8">
     <h2 className="text-2xl font-bold">Amenities</h2>
-    <div className="grid grid-cols-4 gap-4 mt-4">
+    <div className="grid grid-cols-4 gap-4 mt-4 media-amenities">
         <button className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-2 rounded-lg transition duration-300 shadow-md">
             Swimming Pool
         </button>
@@ -316,7 +239,7 @@ import { Link } from 'react-router-dom';
 <hr className="my-8" />
 
                     <h2 className="text-2xl font-bold mt-8">Location</h2>
-                    <div className="mt-4 ml-10" style={{ height: '400px' }}>
+                    <div className="mt-4 ml-10 w-full media-map" >
                       <img src={map} alt='Map' />
                       <img src={map2} alt='Map' />
                     </div>
@@ -472,7 +395,7 @@ import { Link } from 'react-router-dom';
                                     <p className="text-red-700 font-bold mt-1">Rs 5499/guest</p>
                                 </div>
                             </div>
-                            <div className="flex items-center justify-end mt-4 space-x-4 mb-6">
+                            <div className="flex items-center justify-end mt-4 space-x-4 mb-6 md:text-sm">
     <button
         className="bg-red-700 hover:bg-red-500 text-white font-bold py-2 px-4 rounded mb-5"
         style={{ backgroundColor: "#b91c1c", color: "white" }}

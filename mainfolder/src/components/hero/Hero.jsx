@@ -16,7 +16,7 @@
         return (
             <div className="" style={{'margin-top':'248px'}}> {/* Adjusted the margin top to move the Hero section below the Navbar */}
                 <Slider {...settings}>
-                    <div>
+                    <div className=''>
                         <img
                             className="w-full"
                             src={bannerImage} // Replace this with your image URL
@@ -45,8 +45,8 @@
                         />
                     </div>
                 </Slider>
-                <div className="absolute bottom-0 left-0 p-4 " style={{top:'110%'}}>
-                    <button className="bg-gray-300 text-red-500 px-4 py-4 rounded-lg font-bold text-2xl">Book AT BEST PRICES</button>
+                <div className="absolute bottom-0 left-0 top-1/3 mt-10 md:top-full p-4 " >
+                    <button className="bg-gray-300 text-red-500 px-1 py-1 md:px-4 md:py-4 rounded-lg font-bold text-sm md:text-xl">Book AT BEST PRICES</button>
                 </div>
             </div>
         );

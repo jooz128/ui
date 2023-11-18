@@ -21,17 +21,17 @@ function Second() {
     { name: "Activity 5", image: smallslided },
   ];
   return (
-    <div className="max-w-full overflow-hidden relative flex justify-center items-center mt-8">
-      <div className="w-full overflow-hidden flex flex-col items-center">
-        <h1 className="text-red-500 text-4xl font-bold mb-6">POPULAR PLACES</h1>
-        <div className="flex justify-center">
+    <div className="max-w-full overflow-hidden relative flex justify-center items-center mt-4">
+      <div className="w-full overflow-hidden flex flex-col items-center pr-6">
+        <h1 className="text-red-500 text-lg font-bold mb-6 md:text-4xl">POPULAR PLACES</h1>
+        <div className="flex flex-col justify-center items-center md:flex md:flex-row ">
           <div className="flex flex-col items-center mx-4">
             <img
               className="transition-transform duration-300 ease-in-out block w-90 h-auto"
               src={slided}
               alt="Slider"
             />
-            <p className="text-center text-lg font-bold mt-4">Hiking</p>
+            <p className="text-center text-lg font-bold ">Hiking</p>
             <p className="text-center  mt-1">Reviews: 5 stars</p>
           </div>
           <div className="flex flex-col items-center mx-4">
@@ -40,11 +40,11 @@ function Second() {
               src={slided}
               alt="Slider"
             />
-            <p className="text-center text-lg font-bold mt-4">Skiing</p>
+            <p className="text-center text-lg font-bold ">Skiing</p>
             <p className="text-center  mt-1">Reviews: 4.5 stars</p>
           </div>
         </div>
-        <h1 className="text-red-500 text-4xl font-bold mt-8 mb-6">Top Activities</h1>
+        <h1 className="text-red-500 text-lg font-bold mt-8 mb-6 md:text-4xl">Top Activities</h1>
         <div className="flex justify-center">
           {/* Add five larger images and corresponding text here */}
           <div className="flex flex-col items-center mx-4">
