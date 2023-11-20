@@ -29,8 +29,8 @@ const Settings = () => {
               <Switch
                 onChange={() => setPrivacySwitch(!privacySwitch)}
                 checked={privacySwitch}
-                onColor="#86d3ff"
-                onHandleColor="#2693e6"
+                onColor="#000"
+                onHandleColor="#000"
                 handleDiameter={20}
                 uncheckedIcon={false}
                 checkedIcon={false}
@@ -56,13 +56,14 @@ const Settings = () => {
               <Switch
                 onChange={() => setPreferencesSwitch(!preferencesSwitch)}
                 checked={preferencesSwitch}
-                onColor="#86d3ff"
-                onHandleColor="#2693e6"
+                onColor="#000"
+                onHandleColor="#000"
                 handleDiameter={20}
                 uncheckedIcon={false}
                 checkedIcon={false}
                 height={10}
                 width={35}
+                
               />
             </h2>
             <p className="text-sm mb-4">
@@ -83,8 +84,8 @@ const Settings = () => {
               <Switch
                 onChange={() => setDeleteSwitch(!deleteSwitch)}
                 checked={deleteSwitch}
-                onColor="#86d3ff"
-                onHandleColor="#2693e6"
+                onColor="#000"
+                onHandleColor="#000"
                 handleDiameter={20}
                 uncheckedIcon={false}
                 checkedIcon={false}
@@ -104,8 +105,8 @@ const Settings = () => {
               <Switch
                 onChange={() => setNotificationsSwitch(!notificationsSwitch)}
                 checked={notificationsSwitch}
-                onColor="#86d3ff"
-                onHandleColor="#2693e6"
+                onColor="#000"
+                onHandleColor="#000"
                 handleDiameter={20}
                 uncheckedIcon={false}
                 checkedIcon={false}

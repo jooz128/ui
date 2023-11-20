@@ -70,8 +70,35 @@
   }
 
 
- 
+  .searchbar{
+    max-width: 100%;
+    width: 40%;
+    height: 63px;
+    border-radius: 70px;
+    margin: 0 auto;
+  }
   
+  .media-larger-image {
+    width: 54.5%;
+  }
+
+  .save-button{
+    position:absolute;
+    top:86%;
+    right:87%;
+  }
+
+  .share-button{
+    position:absolute;
+    top:86%;
+    right:80%;
+  }
+
+  .gallery-button{
+    position:absolute;
+    top:84%;
+    right:3.9%;
+  }
 
   @media (max-width: 768px) {
     .booking-last-media{
@@ -123,9 +150,30 @@
     font-size: 12px;
   }
   .searchbar-media{
-    width: 90%;
+    width: 100%;
     font-size: 12px;
   }
+  .media-larger-image{
+    width: 64.5%;
   }
+  .save-button{
+    position: absolute;
+      top: 50%;
+      right: 68%;
+  }
+
+  .share-button{
+    position: absolute;
+    top: 50%;
+    right: 48%;
+}
+.gallery-button {
+  position: absolute;
+  top: 61%;
+  left: 50%;
+}
+
+  }
+  
 
 
