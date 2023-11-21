@@ -379,17 +379,20 @@ const [activityNames, setActivityNames] = useState([]);
             <div>No Photo Available</div>
           )}
 
-          <div className="font-bold text-lg md:text-xl mb-2">{activity.name}</div>
-          <div className="font-semibold overflow-hidden line-clamp-2 mt-1">{activity.description}</div>
-          <div className="text-center text-base font-semibold"> Rs{activity.price}/guest</div>
-          <div className="flex items-center justify-center mb-2">
-            <div className='text-center text-sm font-semibold mt-1'>
-              {Array.from({ length: Math.floor(activity.rating) }).map((_, index) => (
-                <FontAwesomeIcon icon={faStar} key={index} className="text-black text-sm" />
-              ))}
-              {activity.rating}
-            </div>
-          </div>
+         
+          <div className="font-bold text-sm md:text-lg mb-2  pl-5 overflow-hidden overflow-ellipsis">
+  {activity.name}-<span className='font-medium'>{activity.description}</span>
+</div>
+<div className="text-center text-base font-semibold"> Rs{activity.price}/guest</div>
+<div className="flex items-center justify-center ">
+  <div className='text-center text-sm font-semibold '>
+    {Array.from({ length: Math.floor(activity.rating) }).map((_, index) => (
+      <FontAwesomeIcon icon={faStar} key={index} className="text-black text-sm" />
+    ))}
+    {activity.rating}(125 reviews)
+  </div>
+</div>
+
         </div>
       </div>
     ))}

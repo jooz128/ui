@@ -194,7 +194,7 @@ const [activityNames, setActivityNames] = useState([]);
   return (
     <>
       <Header />
-      <div className="bg-white md:mt-24" style={{ marginTop: '260px' }}>
+      <div className="bg-white md:mt-24" style={{ marginTop: '285px' }}>
     
   <div className="flex justify-center items-center flex-wrap activities-button-media ">
   <FontAwesomeIcon
