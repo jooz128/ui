@@ -1,22 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/Footer';
 import Sidebar from '../../components/sidebar/Sidebar';
 
 const Payments = () => {
+  const [showSidebar, setShowSidebar] = useState(true);
+
+  
+  useEffect(() => {
+    const handleResize = () => {
+      setShowSidebar(window.innerWidth > 768); // Adjust the width as needed
+    };
+
+    // Initial check
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   return (
     <>
       <Header />
 
-      <div className="flex flex-col md:flex-row" style={{ marginTop: '250px' }}>
-        {/* Sidebar Section */}
-        <Sidebar />
+      <div className="flex flex-col md:flex-row" style={{ marginTop: '275px'  }}>
+      
+      {showSidebar && <Sidebar />}
 
         {/* Main Content */}
         <div className="flex-grow p-6">
-          <h1 className="text-3xl font-bold mb-6">Payments</h1>
-
           {/* Save Credit Card Details Section */}
           <div className="mb-6">
             <h2 className="text-xl font-bold mb-4">Save Credit Card Details</h2>

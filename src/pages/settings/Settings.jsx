@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/Footer';
@@ -10,18 +10,34 @@ const Settings = () => {
   const [preferencesSwitch, setPreferencesSwitch] = useState(true);
   const [deleteSwitch, setDeleteSwitch] = useState(true);
   const [notificationsSwitch, setNotificationsSwitch] = useState(true);
+  const [showSidebar, setShowSidebar] = useState(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setShowSidebar(window.innerWidth > 768); // Adjust the width as needed
+    };
+
+    // Initial check
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   return (
     <>
       <Header />
 
-      <div className="flex flex-col md:flex-row" style={{ marginTop: '250px' }}>
+      <div className="flex flex-col md:flex-row" style={{ marginTop: '275px' }}>
         {/* Sidebar Section */}
-        <Sidebar />
+        {showSidebar && <Sidebar />}
 
         {/* Main Content */}
         <div className="flex-grow p-6">
-          <h1 className="text-3xl font-bold mb-6">Settings</h1>
-
           {/* Privacy Section */}
           <div className="mb-6">
           <h2 className="flex items-center justify-between text-xl font-bold mb-4">
@@ -38,13 +54,13 @@ const Settings = () => {
                 width={35}
               />
             </h2>
-            <p className="text-sm mb-4">
+            <p className="text-sm mb-4 font-semibold">
               Exercise your privacy rights and control how your data is used.
             </p>
-            <p className="text-sm mb-4">
+            <p className="text-sm mb-4 font-semibold">
               Privacy setting: <span className="font-bold">garima@xyz.in</span>
             </p>
-            <p className="text-sm mb-4">
+            <p className="text-sm mb-4 font-semibold">
               Select <span className="font-bold">Manage</span> to change your privacy settings and exercise your rights during our request form.
             </p>
           </div>
@@ -66,13 +82,13 @@ const Settings = () => {
                 
               />
             </h2>
-            <p className="text-sm mb-4">
+            <p className="text-sm mb-4 font-semibold">
               Exercise your privacy rights and control how your data is used.
             </p>
-            <p className="text-sm mb-4">
+            <p className="text-sm mb-4 font-semibold">
               Privacy setting: <span className="font-bold">garima@xyz.in</span>
             </p>
-            <p className="text-sm mb-4">
+            <p className="text-sm mb-4 font-semibold">
               Select <span className="font-bold">Manage</span> to change your privacy settings and exercise your rights during our request form.
             </p>
           </div>
@@ -93,7 +109,7 @@ const Settings = () => {
                 width={35}
               />
             </h2>
-            <p className="text-sm mb-4">
+            <p className="text-sm mb-4 font-semibold">
               Exercise your privacy rights and control how your data is used.
             </p>
           </div>
@@ -114,7 +130,7 @@ const Settings = () => {
                 width={35}
               />
             </h2>
-            <p className="text-sm mb-4">
+            <p className="text-sm mb-4 font-semibold">
               Exercise your privacy rights and control how your data is used.
             </p>
           </div>

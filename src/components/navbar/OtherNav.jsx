@@ -65,7 +65,7 @@ const OtherNav = () => {
     localStorage.setItem('selectedGuests', event.target.value);
   };
   return (
-    <div className='shadow-md w-full fixed top-32 left-0 z-50 bg-white overflow-x-hidden media-responsive'>
+    <div className='shadow-md w-full fixed top-36 left-0 z-50 bg-white overflow-x-hidden media-responsive'>
     <div className="flex justify-center items-center bg-opacity-50 border-2 border-gray-400 px-4 py-2 relative top-5 left-0 md:left-80 shadow-lg md:static searchbar-media searchbar" >
         <select 
           name="category" 
@@ -78,7 +78,7 @@ const OtherNav = () => {
           <option value="Hyderabad">Hyderabad</option>
           <option value="Bangalore">Bangalore</option>
         </select>
- <img src={line} className='h-6' />
+ <img src={line} className='w-0 md:w-2 md:h-6' />
   <input
           type="date"
           placeholder="Anyweek/date"
@@ -103,7 +103,7 @@ const OtherNav = () => {
           <option value="7">7</option>
           <option value="8">8</option>
         </select>
-        <img src={line} className='h-6' />
+        <img src={line} className='w-0 md:w-2 md:h-6' />
   <div className="flex items-center mx-1 md:mx-4">
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -127,17 +127,17 @@ const OtherNav = () => {
     &lt;
   </button>
   <Link to="/flights" className={`mx-2 md:mx-7 text-xs md:text-lg font-semibold ${location.pathname === '/flights' ? 'text-red-700' : 'text-black'} hover:text-gray-500`}>FLIGHTS</Link>
-  <img src={line} className='h-6' />
+  <img src={line} className='w-0 md:w-2 md:h-6' />
   <Link to="/hotels" className={`mx-2 md:mx-7 text-xs md:text-lg font-semibold ${location.pathname.includes('/hotels') || location.pathname === '/hotelsdetails' ? 'text-red-700' : 'text-black'} hover:text-gray-500`}>HOTELS</Link>
- <img src={line} className='h-6' />
+ <img src={line} className='w-0 md:w-2 md:h-6' />
   <Link to="/activities" className={`mx-2 md:mx-7 text-xs md:text-lg font-semibold ${location.pathname.includes('/activities') || location.pathname.includes('/activitiesdetails/') ? 'text-red-700' : 'text-black'} hover:text-gray-500`}>ACTIVITIES</Link>
- <img src={line} className='h-6' />
+ <img src={line} className='w-0 md:w-2 md:h-6' />
   <Link to="/" className={`mx-2 md:mx-7 text-xs md:text-lg font-semibold ${location.pathname === '/flightandcar' ? 'text-red-700' : 'text-black'} hover:text-gray-500`}>FLIGHT+CAR</Link>
- <img src={line} className='h-6' />
+ <img src={line} className='w-0 md:w-2 md:h-6' />
   <Link to="/" className={`mx-2 md:mx-7 text-xs md:text-lg font-semibold ${location.pathname === '/holiday' ? 'text-red-700' : 'text-black'} hover:text-gray-500`}>HOLIDAY PACKAGES</Link>
- <img src={line} className='h-6' />
+ <img src={line} className='w-0 md:w-2 md:h-6' />
   <Link to="/" className={`mx-2 md:mx-7 text-xs md:text-lg font-semibold ${location.pathname === '/cruise' ? 'text-red-700' : 'text-black'} hover:text-gray-500`}>CRUISE</Link>
- <img src={line} className='h-6' />
+ <img src={line} className='w-0 md:w-2 md:h-6' />
   <Link to="/" className={`mx-2 md:mx-7 text-xs md:text-lg font-semibold ${location.pathname === '/grouptravel' ? 'text-red-700' : 'text-black'} hover:text-gray-500`}>GROUP TRAVEL</Link>
   <button className='font-bold text-lg pl-5 text-gray-500'> &gt;</button>
 </div>

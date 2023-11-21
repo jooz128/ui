@@ -18,12 +18,14 @@ import { faMapMarker,faStar } from '@fortawesome/free-solid-svg-icons';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
 import { faTimes,faBookmark,faShare,faCheck } from '@fortawesome/free-solid-svg-icons';
 import Booking from '../booking/Booking';
+import tickImage from '../../assets/bluecheck.png'
 
     const ActivitiesDetailsPage = () => {
         const [showExperience, setShowExperience] = useState(true);
         const [selectedImages, setSelectedImages] = useState([]);
         const [agencyData, setAgencyData] = useState(null); 
         const [isBookingPopupVisible, setBookingPopupVisibility] = useState(false); 
+   
 
      
         useEffect(() => {
@@ -44,13 +46,18 @@ import Booking from '../booking/Booking';
             fetchData();
           }, []);
 
-        const handleImageClick = (image) => {
-          if (selectedImages.includes(image)) {
-            setSelectedImages(selectedImages.filter((selectedImage) => selectedImage !== image));
-          } else {
-            setSelectedImages([...selectedImages, image]);
-          }
-        };
+          const handleImageClick = (image) => {
+            const index = selectedImages.indexOf(image);
+            if (index === -1) {
+              // Image not selected, add it to the selected images
+              setSelectedImages([...selectedImages, image]);
+            } else {
+              // Image already selected, remove it from the selected images
+              const updatedImages = [...selectedImages];
+              updatedImages.splice(index, 1);
+              setSelectedImages(updatedImages);
+            }
+          };
         
         const handleExperienceClick = () => {
             setShowExperience(true);
@@ -147,26 +154,26 @@ import Booking from '../booking/Booking';
       {agencyData && (
         <div className="flex items-center ml-4">
           <FontAwesomeIcon icon={faStar} className="text-black mr-2 h-4" />
-          <p className="font-semibold">{agencyData.rating}{agencyData.review}</p>
+          <p className="font-semibold">{agencyData.rating}(125 reviews) </p>
         </div>
       )}
     </div>
   </div>
                    
                     
-                    <div className="mt-4 pl-20">
+                    <div className="mt-4 pl-24">
                     {agencyData && (
                         <div className="mt-4">
                         <p className="text-lg ">{agencyData.description}</p>
                     </div>
                     )}
-                        <div className="flex items-center mt-2">
-                        <FontAwesomeIcon icon={faClock} className="text-black mr-2 h-4" />
+                        <div className="flex items-center mt-5">
+                        <FontAwesomeIcon icon={faClock} className="text-black mr-4 h-4" />
                          <p>Duration : {roomData.duration}</p>
                             
                         </div>
-                        <div className="flex items-center mt-2">
-                           <FontAwesomeIcon icon={faTimes} className="text-black mr-2 h-6 w-4" />
+                        <div className="flex items-center mt-5">
+                           <FontAwesomeIcon icon={faTimes} className="text-black mr-4 h-6 w-4" />
                                           <p>CancellationPolicy: {roomData.cancellationPolicy}<span className='text-gray-400'>Learn more</span></p>
                                 </div>
                     </div>
@@ -198,24 +205,28 @@ import Booking from '../booking/Booking';
     {showExperience ? (
       <div className="flex flex-wrap justify-center mt-5 media-details-images">
       {[1, 2, 3].map((index) => (
-        <div key={index} className="flex flex-col items-center mx-4 mt-4 md:w-48 sm:w-72 w-full">
+        <div key={index} className="relative flex flex-col items-center mx-4 mt-4 w-48 md:w-ful sm:w-72 l">
           <img
-            className={`transition-transform duration-300 ease-in-out block w-full h-56 cursor-pointer shadow-lg ${
-              selectedImages.includes(`Activity ${index}`) ? 'border-4 border-red-700' : ''
-            }`}
+            className='transition-transform duration-300 ease-in-out block w-48 h-56 cursor-pointer shadow-lg'
             src={smallslided}
             alt={`Activity ${index}`}
             onClick={() => handleImageClick(`Activity ${index}`)}
           />
+          <img
+            src={tickImage} 
+            alt="Tick"
+            className="absolute top-5 right-1/4 transform translate-x-1/2 -translate-y-1/2 w-10 h-10"
+            style={{ display: selectedImages.includes(`Activity ${index}`) ? 'block' : 'none' }}
+          />
+
           <p className="text-center text-lg font-bold mt-2">Activity {index}</p>
           <div className="border border-gray-400 text-center mt-2 py-2 p-5 shadow-md">
-            <p className="text-2xl text-red-700 font-bold">Zip line (30 min)</p>
-            <p className="text-lg text-black font-bold">Below Rs 3456/guest</p>
+            <p className="text-lg text-red-700 font-bold">Zip line (30 min)</p>
+            <p className="text-sm text-black font-bold">Below Rs 3456/guest</p>
           </div>
         </div>
       ))}
     </div>
-
   ) : (
     <div className="flex flex-col items-center mt-5 p-6 border-2 border-gray-300 rounded-md shadow-lg">
       <div className="flex justify-evenly w-full">
@@ -409,8 +420,8 @@ import Booking from '../booking/Booking';
     </div>
     <hr className="my-8" />
     <div className='pl-20'>
-    <h2 className="text-2xl font-bold mb-8 ">Other Activities by Provider</h2>
-    <div className="flex  mt-5 space-x-4 mb-8">
+    <h2 className="text-xl font-bold mb-8 ">Other Activities by Provider</h2>
+    <div className="flex mt-5 space-x-4 mb-8">
                                 {/* Activity card 1 */}
                                 <div className="flex flex-col items-center">
                                 

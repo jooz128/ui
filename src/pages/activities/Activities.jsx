@@ -234,15 +234,15 @@ const [activityNames, setActivityNames] = useState([]);
 </div>
       <div className="flex" >
       {/* Left section for filters and sorting */}
-        <div className="w-8/12 bg-gray-100 p-4 md:w-1/4">
+        <div className="w-8/12 bg-gray-100 p-4 md:w-1/4 mt-10">
           <div className="mb-4 ">
-            <h2 className="text-2xl font-bold mb-2">Filters</h2>
+            <h2 className="text-2xl font-bold mb-2 leading-8">FILTERS</h2>
             <hr className="my-4" />
             <div className="mb-4">
-  <h3 className="text-xl font-bold mb-2">Activity Name</h3>
-  <div className="overflow-y-auto max-h-32 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 font-medium">
+  <h3 className="text-xl font-bold mb-2 leading-8">Activity Name</h3>
+  <div className="overflow-y-auto max-h-32 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100  font-medium">
     {activityNames.map((name, index) => (
-      <div key={index} className="mb-2 cursor-pointer">
+      <div key={index} className="mb-2 cursor-pointer leading-8">
         <label>
           <input
             type="checkbox"
@@ -258,8 +258,8 @@ const [activityNames, setActivityNames] = useState([]);
 </div>
  <hr className="my-4" />
             <div className="mb-4">
-              <h3 className="text-xl font-bold mb-2">Price</h3>
-              <div className="mb-2 cursor-pointer font-medium">
+              <h3 className="text-xl font-bold leading-8 mb-2">Price</h3>
+              <div className="mb-2 cursor-pointer leading-8 font-medium">
               <label>
                 <input
                   type="checkbox"
@@ -270,7 +270,7 @@ const [activityNames, setActivityNames] = useState([]);
                 ₹500 - ₹1000
               </label>
             </div>
-            <div className="mb-2 cursor-pointer font-medium">
+            <div className="mb-2 cursor-pointer leading-8 font-medium">
               <label>
                 <input
                   type="checkbox"
@@ -281,7 +281,7 @@ const [activityNames, setActivityNames] = useState([]);
                 ₹1000 - ₹2000
               </label>
             </div>
-            <div className="mb-2 cursor-pointer font-medium">
+            <div className="mb-2 cursor-pointer leading-8 font-medium">
               <label>
                 <input
                   type="checkbox"
@@ -295,7 +295,7 @@ const [activityNames, setActivityNames] = useState([]);
             </div>
             <hr className="my-4" />
             <div>
-              <h3 className="text-xl font-bold mb-2">Your Budget</h3>
+              <h3 className="text-xl font-bold leading-8 mb-2">Your Budget</h3>
               <div className="flex flex-col mb-2 md:flex md:flex-row ">
         <input
           type="text"
@@ -320,10 +320,10 @@ const [activityNames, setActivityNames] = useState([]);
             </div>
             <hr className="my-4" />
             <div className="mb-4">
-  <h3 className="text-xl font-bold mb-2">Activity Type</h3>
+  <h3 className="text-xl font-bold leading-8 mb-2">Activity Type</h3>
   <div className="overflow-y-auto max-h-32">
     {activityTypes.map((type, index) => (
-      <div key={index} className="mb-2 cursor-pointer font-medium">
+      <div key={index} className="mb-2 cursor-pointer leading-8 font-medium">
         <label>
           <input
             type="checkbox"
@@ -339,17 +339,17 @@ const [activityNames, setActivityNames] = useState([]);
 </div>
             <hr className="my-4" />
             <div className='font-medium'>
-              <h3 className="text-xl font-bold mb-2">Star Rating</h3>
-              <div className="mb-2 cursor-pointer">
-    <label>
-      <input
-        type="checkbox"
-        className="mr-2"
-        value="5"
-        onChange={handleRatingChange}
-      />
-      5 stars
-    </label>
+              <h3 className="text-xl font-bold leading-8 mb-2">Star Rating</h3>
+              <div className="mb-2 leading-8 cursor-pointer">
+              <label className="flex items-center">
+  <input
+    type="checkbox"
+    className="mr-2 rounded-full"
+    value="5"
+    onChange={handleRatingChange}
+  />
+  5 star
+</label>
   </div>
   <div className="mb-2 cursor-pointer">
     <label>
@@ -359,7 +359,7 @@ const [activityNames, setActivityNames] = useState([]);
         value="4"
         onChange={handleRatingChange}
       />
-      4 stars
+      4 star
     </label>
   </div>
   <div className="mb-2 cursor-pointer">
@@ -370,7 +370,7 @@ const [activityNames, setActivityNames] = useState([]);
         value="3"
         onChange={handleRatingChange}
       />
-      3 stars
+      3 star
     </label>
   </div>
             </div>

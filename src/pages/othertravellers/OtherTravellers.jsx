@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/Footer';
@@ -8,32 +8,37 @@ const OtherTravellers = () => {
     const [travelers, setTravelers] = useState([]);
     const [newTraveler, setNewTraveler] = useState({});
     const [showAddForm, setShowAddForm] = useState(false);
+    const [showSidebar, setShowSidebar] = useState(true);
   
     const handleAddTravellerClick = () => {
       setShowAddForm(true);
     };
   
-    const handleAddTraveler = () => {
-      setTravelers([...travelers, newTraveler]);
-      setNewTraveler({});
-      setShowAddForm(false);
-    };
+    useEffect(() => {
+      const handleResize = () => {
+        setShowSidebar(window.innerWidth > 768); // Adjust the width as needed
+      };
   
-    const handleInputChange = (field, value) => {
-      setNewTraveler({ ...newTraveler, [field]: value });
-    };
+      // Initial check
+      handleResize();
+  
+      // Add event listener for window resize
+      window.addEventListener('resize', handleResize);
+  
+      // Cleanup event listener on component unmount
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
 
   return (
     <>
       <Header />
-      <div className="flex flex-col md:flex-row" style={{ marginTop: '250px' }}>
+      <div className="flex flex-col md:flex-row" style={{ marginTop: '275px' }}>
         {/* Sidebar */}
-      <Sidebar />
-
+        {showSidebar && <Sidebar />}
         {/* Main Content */}
         <div className="flex-grow p-6">
-          <h1 className="text-3xl font-bold mb-6">Other Travellers</h1>
-
           {/* Display Travellers */}
           <div className="mb-6">
             <div className="flex items-center mb-4 border-b border-gray-300 pb-4">

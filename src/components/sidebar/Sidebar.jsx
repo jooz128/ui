@@ -2,8 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 const Sidebar = () => {
   return (
-    <div className="bg-white text-black w-full md:w-1/4  text-center md:text-left">
-    <div className='hover:bg-gray-300'>
+    <div className="bg-white border-r text-black w-full md:w-1/4 text-center">
+    <div className='mt-5 hover:bg-gray-300'>
       <Link to="/profile" className="text-xl font-bold mb-3 block">Your Profile</Link>
       <p className="text-sm mb-3 text-gray-600">Manage your personal details and info</p>
       <div className="border-b border-gray-700 "></div>
