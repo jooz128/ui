@@ -34,7 +34,7 @@ const Header = () => {
     return (
         <>
             <div className='shadow-md w-full fixed top-0 left-0 z-50'>
-                <div className='md:flex items-center justify-between bg-black md:px-10 px-7 py-10 z-50 overflow-x-hidden '>
+                <div className='md:flex items-center justify-between bg-black md:px-10 px-7 py-8 z-50 overflow-x-hidden '>
                     {/* logo section */}
                     <div className='font-bold text-2xl cursor-pointer flex items-center gap-4'>
                         <BookOpenIcon className='w-7 h-7 text-blue-600' />

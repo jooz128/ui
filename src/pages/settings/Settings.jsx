@@ -32,7 +32,7 @@ const Settings = () => {
     <>
       <Header />
 
-      <div className="flex flex-col md:flex-row" style={{ marginTop: '275px' }}>
+      <div className="flex flex-col md:flex-row w-fit md:w-full" style={{ marginTop: '285px' }}>
         {/* Sidebar Section */}
         {showSidebar && <Sidebar />}
 

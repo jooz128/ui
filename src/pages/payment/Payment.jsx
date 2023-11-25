@@ -28,7 +28,7 @@ const Payments = () => {
     <>
       <Header />
 
-      <div className="flex flex-col md:flex-row" style={{ marginTop: '275px'  }}>
+      <div className="flex flex-col md:flex-row" style={{ marginTop: '285px'  }}>
       
       {showSidebar && <Sidebar />}
 
@@ -36,7 +36,7 @@ const Payments = () => {
         <div className="flex-grow p-6">
           {/* Save Credit Card Details Section */}
           <div className="mb-6">
-            <h2 className="text-xl font-bold mb-4">Save Credit Card Details</h2>
+            <h2 className="text-lg md:text-xl font-bold mb-4">Save Credit Card Details</h2>
             <div className="grid grid-cols-3 gap-4">
               <div>
                 <p className="text-sm font-semibold mb-1">First Name</p>
@@ -55,7 +55,7 @@ const Payments = () => {
 
           {/* Save UPI Section */}
           <div>
-            <h2 className="text-xl font-bold mb-4">Save UPI</h2>
+            <h2 className="text-lg md:text-xl font-bold mb-4">Save UPI</h2>
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <p className="text-sm font-semibold mb-1">UPI ID</p>
@@ -67,7 +67,7 @@ const Payments = () => {
               </div>
            
             </div>
-            <p className='mt-8'>Securely add or remove payments methods to make it easier when you book</p>  
+            <p className='mt-8 text-sm md:text-lg'>Securely add or remove payments methods to make it easier when you book</p>  
           </div>
           
         </div>

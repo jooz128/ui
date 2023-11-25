@@ -14,7 +14,7 @@ const Hero = () => {
     };
 
     return (
-        <div className="" style={{ marginTop: '278px', overflow: 'hidden' }}>
+        <div className="" style={{ marginTop: '238px', overflow: 'hidden' }}>
             {/* Adjusted the margin top to move the Hero section below the Navbar */}
             <Slider {...settings}>
                 <div className="slider-item">
@@ -46,7 +46,7 @@ const Hero = () => {
                     />
                 </div>
             </Slider>
-            <div className="absolute bottom-0 left-0 top-1/3 mt-10 md:top-full p-4">
+            <div className="absolute bottom-0 left-0 top-1/3  md:top-full p-4">
                 <button className="bg-red-700 text-white px-1 py-1 md:px-4 md:py-4 rounded-lg font-semibold text-sm md:text-2xl">
                     Book AT BEST PRICES
                 </button>

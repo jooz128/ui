@@ -25,7 +25,8 @@ import tickImage from '../../assets/bluecheck.png'
         const [selectedImages, setSelectedImages] = useState([]);
         const [agencyData, setAgencyData] = useState(null); 
         const [isBookingPopupVisible, setBookingPopupVisibility] = useState(false); 
-   
+        const [isPopupVisible, setPopupVisibility] = useState(false);
+
 
      
         useEffect(() => {
@@ -67,9 +68,11 @@ import tickImage from '../../assets/bluecheck.png'
             setShowExperience(false);
         };
 
-        const toggleBookingPopup = () => {
-          setBookingPopupVisibility(!isBookingPopupVisible); // Step 2
+        const togglePopup = () => {
+          setPopupVisibility(!isPopupVisible);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         };
+        
 
         // Sample data for the room
         const roomData = {
@@ -141,8 +144,8 @@ import tickImage from '../../assets/bluecheck.png'
           <p></p>
         </>
       )}
-      <div className='pr-10'>
-        <button className="bg-gray-300 hover:bg-gray-500 text-black font-bold text-xl py-2 px-6 rounded media-book-now">
+      <div className='pr-10'> 
+        <button className="bg-red-700 hover:bg-red-500 text-white font-bold text-xl py-2 px-6 rounded media-book-now" onClick={togglePopup}>
           Book Now
         </button>
       </div>
@@ -231,31 +234,31 @@ import tickImage from '../../assets/bluecheck.png'
     <div className="flex flex-col items-center mt-5 p-6 border-2 border-gray-300 rounded-md shadow-lg">
       <div className="flex justify-evenly w-full">
         <div className="text-center">
-          <img src={calendar} alt="Calendar" />
+          <img src={calendar} alt="Calendar" className='pl-7' />
           <p className="text-lg text-black text-center">IMP Feature</p>
         </div>
         <div className="text-center">
-          <img src={calendar} alt="Calendar" />
+          <img src={calendar} alt="Calendar" className='pl-7' />
           <p className="text-lg text-black text-center">IMP Feature</p>
         </div>
         <div className="text-center">
-          <img src={calendar} alt="Calendar" />
+          <img src={calendar} alt="Calendar" className='pl-7' />
           <p className="text-lg text-black text-center">IMP Feature</p>
         </div>
         <div className="text-center">
-          <img src={calendar} alt="Calendar" />
+          <img src={calendar} alt="Calendar" className='pl-7' />
           <p className="text-lg text-black text-center">IMP Feature</p>
         </div>
       </div>
 
       {/* Provider Name Section */}
-      <div className="mt-5 flex items-center">
+      <div className="mt-5 flex items-center" style={{paddingRight:'375px'}}>
         <div className="bg-gray-500 w-8 h-8 rounded-full mr-3"></div>
-        <h2 className="text-lg font-bold">Provider Name</h2>
+        <h2 className="text-xl font-bold pr-96 text-red-700 ">Provider Name</h2>
       </div>
 
       {/* Highlights Section */}
-      <div className="mt-3 text-center">
+      <div className="mt-3 pl-24">
         <p className="text-sm">
           Highlights ghhd hjujhgd ujuheh hghdhdh ujshhgd hghdhfhf hghdhdhd hgshdgd yhjdhdfjf
           hhdgdhdfg uyuifhfifh isguikshj hujfgfujd hsjgksjs ghssjjd hsjjsjuu jsjhsh jjsjssu
@@ -267,8 +270,8 @@ import tickImage from '../../assets/bluecheck.png'
       </div>
 
       {/* Certifications Section */}
-      <div className="mt-5 text-center">
-        <h2 className="text-lg font-bold">Certifications</h2>
+      <div className="mt-5 " style={{paddingRight:'575px'}}>
+        <h2 className="text-xl font-bold text-rose-700">Certifications</h2>
         <div className="flex justify-evenly">
         <img src={rectangle} alt="Rectangle Image" className="w-20 h-20" />
           <img src={rectangle} alt="Rectangle Image" className="w-20 h-20" />
@@ -437,26 +440,26 @@ import tickImage from '../../assets/bluecheck.png'
                                 </div> 
                             </div>
                             </div>
-                            <div className="flex items-center justify-end mt-4 space-x-4 mb-6 md:text-sm">
-    <button
-        className="bg-red-700 hover:bg-red-500 text-white font-bold py-2 px-4 rounded mb-5"
-        style={{ backgroundColor: "#b91c1c", color: "white" }}
-    >
-        Save and Share
-    </button>
-   
-   <div className="flex items-center justify-end mt-4 space-x-4 mb-6 md:text-sm">
-        <button
-          className="bg-red-700 hover:bg-red-500 text-white font-bold py-2 px-4 rounded mb-5"
-          style={{ backgroundColor: "#b91c1c", color: "white" }}
-          onClick={toggleBookingPopup} // Step 3
-        >
-          Continue Booking
-        </button>
-      </div>
+                            {isPopupVisible && <Booking onClose={togglePopup} />}
 
-      {/* Conditionally render the Booking component */}
-      {isBookingPopupVisible && <Booking onClose={toggleBookingPopup} />}
+{/* Continue Booking button */}
+<div className="flex items-center justify-end mt-4 space-x-4 mb-6 md:text-sm">
+  <button
+    className="bg-red-700 hover:bg-red-500 text-white font-bold py-2 px-4 rounded mb-5"
+    style={{ backgroundColor: "#b91c1c", color: "white" }}
+  >
+    Save and Share
+  </button>
+
+  <div className="flex items-center justify-end mt-4 space-x-4 mb-6 md:text-sm">
+    <button
+      className="bg-red-700 hover:bg-red-500 text-white font-bold py-2 px-4 rounded mb-5 mt-2"
+      style={{ backgroundColor: "#b91c1c", color: "white" }}
+      onClick={togglePopup}
+    >
+      Continue Booking
+    </button>
+  </div>
 </div>
         </div>
     </div>

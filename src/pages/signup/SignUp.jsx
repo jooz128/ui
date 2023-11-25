@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -28,19 +29,21 @@ const Signup = () => {
 
   return (
     <>
-          <div className="flex items-center justify-between w-full mb-12 p-6 bg-white rounded shadow-md">
-        <h2 className="text-xl font-bold">Finish SignUp</h2>
-        
-        <img
-          src="https://via.placeholder.com/50"
-          alt="Logo"
-          className="w-8 h-8 object-contain"
-        />
-      </div>
-    <div className="flex items-center justify-center h-screen">
-      <div className="bg-white p-8 rounded shadow-md w-6/12">
-        <h2 className="text-2xl font-bold mb-6">Sign Up</h2>
-        
+       <div className="flex items-center justify-between w-full mb-4 p-6 bg-white rounded shadow-md">
+  <div className="flex items-center ml-32">
+    <FontAwesomeIcon icon={faChevronLeft} className="text-xl " />
+    <h2 className="text-xl font-bold ml-24">Finish SignUp</h2>
+  </div>
+  
+  <img
+    src="https://via.placeholder.com/50"
+    alt="Logo"
+    className="w-12 h-12 object-contain rounded-full"
+  />
+</div>
+
+    <div className="flex items-center justify-center ">
+      <div className="bg-white p-8 rounded w-6/12">
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <input
@@ -81,37 +84,53 @@ const Signup = () => {
 
           {/* Company Details */}
           <div className="mb-4 space-y-2">
-            <input
-              type="text"
-              name="companyName"
-              value={formData.companyName}
-              onChange={handleChange}
-              placeholder="Company Name"
-              className="w-full p-3 border rounded shadow-md"
-            />
+  <div className="relative">
+    <input
+      type="text"
+      name="companyName"
+      value={formData.companyName}
+      onChange={handleChange}
+      placeholder="Company Name"
+      className="w-full p-3 border rounded shadow-md mb-5"
+    />
+    <span className="absolute right-3 top-14 font-semibold text-xs text-red-700 cursor-pointer">
+      Verify
+    </span>
+  </div>
 
-            <input
-              type="tel"
-              name="companyPhone"
-              value={formData.companyPhone}
-              onChange={handleChange}
-              placeholder="Company Phone"
-              className="w-full p-3 border rounded shadow-md"
-            />
+  <div className="relative">
+    <input
+      type="tel"
+      name="companyPhone"
+      value={formData.companyPhone}
+      onChange={handleChange}
+      placeholder="Company Phone"
+      className="w-full p-3 border rounded shadow-md mb-5"
+    />
+    <span className="absolute right-3 top-14 font-semibold text-xs text-red-700 cursor-pointer">
+      Verify
+    </span>
+  </div>
 
-            <input
-              type="email"
-              name="companyEmail"
-              value={formData.companyEmail}
-              onChange={handleChange}
-              placeholder="Company Email"
-              className="w-full p-3 border rounded shadow-md"
-            />
-          </div>
+  <div className="relative">
+    <input
+      type="email"
+      name="companyEmail"
+      value={formData.companyEmail}
+      onChange={handleChange}
+      placeholder="Company Email"
+      className="w-full p-3 border rounded shadow-md mb-5"
+    />
+    <span className="absolute right-3 top-14 font-semibold text-xs text-black cursor-pointer">
+      Verified
+    </span>
+  </div>
+</div>
+
 
    
 
-          <p className="text-sm text-gray-600 mt-4 text-center">
+          <p className="text-sm text-black font-bold mt-4 text-center">
             We will send you hjff ghfghfjhjfhfjf By selecting Agree and Continue, I agree to travelbeem Terms and conditions of service, payment terms of service, non-discrimination policy, and acknowledge the privacy policy.
           </p>
 
@@ -124,7 +143,7 @@ const Signup = () => {
                 onChange={handleChange}
                 className="mr-2"
               />
-              <span className="text-sm text-gray-600 text-center">
+              <span className="text-sm text-black text-center font-base">
                 I don’t want to receive any gdjg vdvhdv gdjdghf ghddghd vhsdvdghdf vhdsgdfh gvjsgd gjdhfj gdjgfhfh gjdshg ghjdhgujf
               </span>
             </label>
@@ -133,7 +152,7 @@ const Signup = () => {
           <div className='flex items-center justify-center'>
           <button
             type="submit"
-            className={`bg-red-700 text-white p-3 rounded mt-4 ${
+            className={`bg-red-700 text-white p-3 mt-4 ${
               !formData.agreementChecked ? 'opacity-50 cursor-not-allowed' : ''
             }`}
             disabled={!formData.agreementChecked}

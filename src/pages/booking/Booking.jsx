@@ -8,7 +8,7 @@ import { faCalendar ,faTimes,faFileAlt} from '@fortawesome/free-solid-svg-icons'
 
 
 const  Booking =({ onClose }) => {
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedDOB,setSelectedDOB]= useState(null);
   const [passengers, setPassengers] = useState([]);
 const [activities, setActivities] = useState({
@@ -98,6 +98,11 @@ const [activities, setActivities] = useState({
   };
 
   return (
+    <div className="modal">
+    <div className="modal-content">
+    <span className="close" onClick={onClose}>
+          &times;
+        </span>
     <div className="mt-10 overflow-x-hidden ">
     <div className="flex justify-top items-top h-100 ml-16 mr-16">
   <div className="container mx-auto pl-4 border border-gray-30 rounded-lg">
@@ -151,14 +156,6 @@ const [activities, setActivities] = useState({
         <span>{activities.zipLine.count}</span>
         <button onClick={() => handleCountIncrement('zipLine')} className="mx-1 border-2 rounded-md border-solid border-black-800 pl-1 pr-1">+</button>
         <select
-          value={activities.zipLine.slotTime}
-          onChange={(e) => handleSlotTimeChange('zipLine', e.target.value)}
-          className="ml-10 border-2 rounded-md border-solid border-black-800 pl-1 pr-1"
-        >
-          <option value="4:00 PM">4:00 PM</option>
-          {/* Add other time options here */}
-        </select>
-        <select 
           value={activities.zipLine.slotTime}
           onChange={(e) => handleSlotTimeChange('zipLine', e.target.value)}
           className="ml-10 border-2 rounded-md border-solid border-black-800 pl-1 pr-1"
@@ -411,19 +408,13 @@ const [activities, setActivities] = useState({
   Confirm Booking
 </button>
 </div>
-
 </div>
-
 </div>
-
-  </div>
-  
 </div>
-
-
-
-
-  );
+</div>
+</div>
+</div>
+);
 }
 
 export default Booking;

@@ -48,7 +48,7 @@ const Promo = () => {
     <>
       <Header />
 
-      <div className="flex flex-col md:flex-row" style={{ marginTop: '275px'  }}>
+      <div className="flex flex-col md:flex-row w-fit md:w-full" style={{ marginTop: '285px'  }}>
        
       {showSidebar && <Sidebar />}
 
@@ -60,32 +60,31 @@ const Promo = () => {
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <p className="text-sm font-semibold mb-1">Promo Code</p>
-                <input type="text" className="border p-2 w-full" placeholder="Enter promo code" />
+                <input type="text" className="border p-2 w-full md:w-1/2 shadow-md" placeholder="Enter promo code" />
               </div>
               <div>
                 <p className="text-sm font-semibold mb-1">Share Link</p>
-                <input type="text" className="border p-2 w-full" placeholder="Enter share link" />
+                <input type="text" className="border p-2 w-full md:w-1/2 shadow-md" placeholder="Enter share link" />
               </div>
             </div>
           </div>
 
           {/* Share Among Friends Section */}
           <div className="mb-6 mt-5">
-            <p className="text-lg font-bold text-red-700">
+            <p className="text-lg md:text-xl font-bold text-red-700">
               SHARE AMONG FRIENDS, EARN MONEY ON YOUR WALLET WITH EVERY BOOKING
             </p>
             <div className="p-6">
               <div className="flex items-center mb-4">
                 {/* Placeholder for Trip image */}
-                <div className="h-12 w-12 bg-gray-500 rounded-full mr-4"></div>
+                <div className="h-12 w-12 bg-gray-300 rounded-full mr-4"></div>
                 <div className="w-1/2">
-                  <p className="text-lg font-bold text-red-700">TRIP</p>
-                  <p className="font-semibold">Flight booked by friends</p>
-                  <p className="font-semibold text-sm">
+                  <p className="font-semibold text-lg ">Flight booked by friends</p>
+                  <p className="font-semibold text-xs md:text-sm">
                     You will get Rs 124 on flight, Rs 263 on rent, Rs 837 on bus, Rs 637 on bus, Rs 579 on car
                   </p>
                 </div>
-                <button className="px-6 py-1 font-bold text-black border rounded-lg cursor-pointer transition duration-300">
+                <button className="px-8 text-black border-2 border-gray-200 rounded-lg cursor-pointer transition duration-300">
                   Invite
                 </button>
               </div>
@@ -94,10 +93,10 @@ const Promo = () => {
 
           {/* Your Coupons Section */}
           <div className="mb-6">
-            <h2 className="text-xl font-bold text-black mb-4">Your Coupons</h2>
+            <h2 className="text-xl font-base text-black mb-4">Your Coupons</h2>
             <div className='flex justify-between mb-4'>
               <p className="text-red-700">Coupon code:</p>
-              <p className="text-sm text-red-700 font-bold">Total savings: Rs 56/-</p>
+              <p className="text-sm text-red-700 font-base">Total savings: Rs 56/-</p>
             </div>
             
             {couponsData.map((coupon, index) => (

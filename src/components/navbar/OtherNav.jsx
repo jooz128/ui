@@ -65,7 +65,7 @@ const OtherNav = () => {
     localStorage.setItem('selectedGuests', event.target.value);
   };
   return (
-    <div className='shadow-md w-full fixed top-36 left-0 z-50 bg-white overflow-x-hidden media-responsive'>
+    <div className='shadow-md w-full fixed top-28  left-0 z-50 bg-white overflow-x-hidden media-responsive'>
     <div className="flex justify-center items-center bg-opacity-50 border-2 border-gray-400 px-4 py-2 relative top-5 left-0 md:left-80 shadow-lg md:static searchbar-media searchbar" >
         <select 
           name="category" 
@@ -126,19 +126,19 @@ const OtherNav = () => {
   <button className='font-bold text-lg pr-5 text-gray-500'>
     &lt;
   </button>
-  <Link to="/flights" className={`mx-2 md:mx-7 text-xs md:text-lg font-semibold ${location.pathname === '/flights' ? 'text-red-700' : 'text-black'} hover:text-gray-500`}>FLIGHTS</Link>
+  <Link to="/flights" className={`mx-2 md:mx-7 text-xs md:text-sm font-semibold ${location.pathname === '/flights' ? 'text-red-700' : 'text-black'} hover:text-gray-500`}>FLIGHTS</Link>
   <img src={line} className='w-0 md:w-2 md:h-6' />
-  <Link to="/hotels" className={`mx-2 md:mx-7 text-xs md:text-lg font-semibold ${location.pathname.includes('/hotels') || location.pathname === '/hotelsdetails' ? 'text-red-700' : 'text-black'} hover:text-gray-500`}>HOTELS</Link>
+  <Link to="/hotels" className={`mx-2 md:mx-7 text-xs md:text-sm font-semibold ${location.pathname.includes('/hotels') || location.pathname === '/hotelsdetails' ? 'text-red-700' : 'text-black'} hover:text-gray-500`}>HOTELS</Link>
  <img src={line} className='w-0 md:w-2 md:h-6' />
-  <Link to="/activities" className={`mx-2 md:mx-7 text-xs md:text-lg font-semibold ${location.pathname.includes('/activities') || location.pathname.includes('/activitiesdetails/') ? 'text-red-700' : 'text-black'} hover:text-gray-500`}>ACTIVITIES</Link>
+  <Link to="/activities" className={`mx-2 md:mx-7 text-xs md:text-sm font-semibold ${location.pathname.includes('/activities') || location.pathname.includes('/activitiesdetails/') ? 'text-red-700' : 'text-black'} hover:text-gray-500`}>ACTIVITIES</Link>
  <img src={line} className='w-0 md:w-2 md:h-6' />
-  <Link to="/" className={`mx-2 md:mx-7 text-xs md:text-lg font-semibold ${location.pathname === '/flightandcar' ? 'text-red-700' : 'text-black'} hover:text-gray-500`}>FLIGHT+CAR</Link>
+  <Link to="/" className={`mx-2 md:mx-7 text-xs md:text-sm font-semibold ${location.pathname === '/flightandcar' ? 'text-red-700' : 'text-black'} hover:text-gray-500`}>FLIGHT+CAR</Link>
  <img src={line} className='w-0 md:w-2 md:h-6' />
-  <Link to="/" className={`mx-2 md:mx-7 text-xs md:text-lg font-semibold ${location.pathname === '/holiday' ? 'text-red-700' : 'text-black'} hover:text-gray-500`}>HOLIDAY PACKAGES</Link>
+  <Link to="/" className={`mx-2 md:mx-7 text-xs md:text-sm font-semibold ${location.pathname === '/holiday' ? 'text-red-700' : 'text-black'} hover:text-gray-500`}>HOLIDAY PACKAGES</Link>
  <img src={line} className='w-0 md:w-2 md:h-6' />
-  <Link to="/" className={`mx-2 md:mx-7 text-xs md:text-lg font-semibold ${location.pathname === '/cruise' ? 'text-red-700' : 'text-black'} hover:text-gray-500`}>CRUISE</Link>
+  <Link to="/" className={`mx-2 md:mx-7 text-xs md:text-sm font-semibold ${location.pathname === '/cruise' ? 'text-red-700' : 'text-black'} hover:text-gray-500`}>CRUISE</Link>
  <img src={line} className='w-0 md:w-2 md:h-6' />
-  <Link to="/" className={`mx-2 md:mx-7 text-xs md:text-lg font-semibold ${location.pathname === '/grouptravel' ? 'text-red-700' : 'text-black'} hover:text-gray-500`}>GROUP TRAVEL</Link>
+  <Link to="/" className={`mx-2 md:mx-7 text-xs md:text-sm font-semibold ${location.pathname === '/grouptravel' ? 'text-red-700' : 'text-black'} hover:text-gray-500`}>GROUP TRAVEL</Link>
   <button className='font-bold text-lg pl-5 text-gray-500'> &gt;</button>
 </div>
 

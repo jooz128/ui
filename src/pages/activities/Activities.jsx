@@ -26,7 +26,7 @@ const Activities = () => {
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
   const [selectedActivityNames, setSelectedActivityNames] = useState([]);
-const [activityNames, setActivityNames] = useState([]);
+  const [activityNames, setActivityNames] = useState([]);
 
   const handleMinPriceChange = (event) => {
     setMinPrice(event.target.value);
@@ -130,7 +130,7 @@ const [activityNames, setActivityNames] = useState([]);
       setSelectedActivityTypes([...selectedActivityTypes, value]);
     } else {
       setSelectedActivityTypes(selectedActivityTypes.filter((type) => type !== value));
-    }
+    } 
   };
 
   const handlePriceRangeChange = (event) => {
@@ -164,7 +164,17 @@ const [activityNames, setActivityNames] = useState([]);
       (selectedPriceRanges.includes("500 - 1000") && activity.price >= 500 && activity.price <= 1000) ||
       (selectedPriceRanges.includes("1000 - 2000") && activity.price >= 1000 && activity.price <= 2000) ||
       (selectedPriceRanges.includes("2000 or more") && activity.price >= 2000);
-    const ratingCondition = selectedRatings.length === 0 || selectedRatings.includes(activity.rating.toString()) || selectedRatings.includes(activity.rating.toFixed(1).toString());
+    
+      const ratingCondition =
+  selectedRatings.length === 0 ||
+  selectedRatings.some((selectedRating) => {
+    const nextRating = parseFloat(selectedRating) + 1;
+    return (
+      parseFloat(activity.rating) >= parseFloat(selectedRating) &&
+      parseFloat(activity.rating) < nextRating
+    );
+  });
+
     const priceRangeCondition =
     (minPrice === '' && maxPrice === '') ||
     (minPrice !== '' && maxPrice !== '' && activity.price >= parseInt(minPrice) && activity.price <= parseInt(maxPrice));
@@ -194,7 +204,7 @@ const [activityNames, setActivityNames] = useState([]);
   return (
     <>
       <Header />
-      <div className="bg-white md:mt-24" style={{ marginTop: '285px' }}>
+      <div className="bg-white md:mt-24" style={{ marginTop: '260px' }}>
     
   <div className="flex justify-center items-center flex-wrap activities-button-media ">
   <FontAwesomeIcon
@@ -339,41 +349,42 @@ const [activityNames, setActivityNames] = useState([]);
 </div>
             <hr className="my-4" />
             <div className='font-medium'>
-              <h3 className="text-xl font-bold leading-8 mb-2">Star Rating</h3>
-              <div className="mb-2 leading-8 cursor-pointer">
-              <label className="flex items-center">
-  <input
-    type="checkbox"
-    className="mr-2 rounded-full"
-    value="5"
-    onChange={handleRatingChange}
-  />
-  5 star
-</label>
-  </div>
-  <div className="mb-2 cursor-pointer">
-    <label>
-      <input
-        type="checkbox"
-        className="mr-2"
-        value="4"
-        onChange={handleRatingChange}
-      />
-      4 star
-    </label>
-  </div>
-  <div className="mb-2 cursor-pointer">
-    <label>
-      <input
-        type="checkbox"
-        className="mr-2"
-        value="3"
-        onChange={handleRatingChange}
-      />
-      3 star
-    </label>
-  </div>
-            </div>
+        <h3 className="text-xl font-bold leading-8 mb-2">Star Rating</h3>
+        <div className="mb-2 leading-8 cursor-pointer">
+          <label className="flex items-center">
+            <input
+              type="checkbox"
+              className="mr-2 rounded-full"
+              value="5"
+              onChange={handleRatingChange}
+            />
+            4+ Stars
+          </label>
+        </div>
+        <div className="mb-2 cursor-pointer">
+          <label>
+            <input
+              type="checkbox"
+              className="mr-2"
+              value="4"
+              onChange={handleRatingChange}
+            />
+            3+ Stars
+          </label>
+        </div>
+        <div className="mb-2 cursor-pointer">
+          <label>
+            <input
+              type="checkbox"
+              className="mr-2"
+              value="3"
+              onChange={handleRatingChange}
+            />
+            2+ Stars
+          </label>
+        </div>
+      </div>
+
            
           </div>
         </div>

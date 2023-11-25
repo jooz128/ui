@@ -30,7 +30,7 @@ const Bookings = () => {
     <>
       <Header />
 
-      <div className="flex flex-col md:flex-row" style={{ marginTop: '265px'  }}>
+      <div className="flex flex-col md:flex-row" style={{ marginTop: '285px'  }}>
       
       
       {showSidebar && <Sidebar />}

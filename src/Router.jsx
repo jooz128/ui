@@ -20,7 +20,20 @@ import GetStarted from './pages/admin/Admin1';
 import ServicePage from './pages/admin/Admin2';
 import PlaceSelectorPage from './pages/admin/Admin3';
 import BookingPage from './pages/booking/Booking';
-
+import PhotoUploadPage from './pages/admin/Photos';
+import RecorderPage from './pages/admin/PhotoDrag'
+import AdminExtra from './pages/admin/AdminExtra';
+import SetPrice from './pages/admin/SetPrice';
+import SetDiscounts from './pages/admin/SetDiscounts';
+import Preview from './pages/admin/Preview';
+import FinalPage from './pages/admin/FinalPage';
+import Review from './pages/admin/Review';
+import Services1 from './pages/admin/Services1';
+import Services2 from './pages/admin/Services2';
+import Services3 from './pages/admin/Services3';
+import ExtraContent1 from './pages/admin/ExtraContent1';
+import Commitment from './pages/admin/Commitment';
+import PlaceSelectorPage1 from './pages/admin/Admin4';
 
 const Router = () => {
   return (
@@ -43,8 +56,21 @@ const Router = () => {
         <Route path='/flights' element={<Flights />} />
         <Route path='/sign-up' element={<Signup />} />
         <Route path='/getstarted' element={<GetStarted />} />
+        <Route path='/services1' element={<Services1 />} />
+        <Route path='/services2' element={<Services2 />} />
+        <Route path='/services3' element={<Services3 />} />
         <Route path='/services' element={<ServicePage />} />
         <Route path='/admin' element={<PlaceSelectorPage />} />
+        <Route path='/admin1' element={<PlaceSelectorPage1 />} />
+        <Route path='/photos' element={<PhotoUploadPage />} />
+        <Route path='/drag' element={<RecorderPage />} />
+        <Route path='/extra-content' element={<AdminExtra />} />
+        <Route path='/extra-content1' element={<ExtraContent1 />} />
+        <Route path='/set-price' element={<SetPrice />} />
+        <Route path='/set-discounts' element={<SetDiscounts/>} />
+        <Route path='/final-page' element={<FinalPage />} />
+        <Route path='/review' element={<Review />} />
+        <Route path='/commitment' element={<Commitment />} />
     </Routes>
     </InputProvider>
    </BrowserRouter>
