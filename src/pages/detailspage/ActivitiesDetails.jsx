@@ -13,11 +13,20 @@ import map from '../../assets/map.png'
 import map2 from '../../assets/map2.png'
 import { Link } from 'react-router-dom';
 import rectangle from '../../assets/Rectangle.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapMarker,faStar } from '@fortawesome/free-solid-svg-icons';
+import { faClock } from '@fortawesome/free-solid-svg-icons';
+import { faTimes,faBookmark,faShare,faCheck } from '@fortawesome/free-solid-svg-icons';
+import Booking from '../booking/Booking';
+import tickImage from '../../assets/bluecheck.png'
 
     const ActivitiesDetailsPage = () => {
         const [showExperience, setShowExperience] = useState(true);
         const [selectedImages, setSelectedImages] = useState([]);
         const [agencyData, setAgencyData] = useState(null); 
+        const [isBookingPopupVisible, setBookingPopupVisibility] = useState(false); 
+        const [isPopupVisible, setPopupVisibility] = useState(false);
+
 
      
         useEffect(() => {
@@ -38,13 +47,18 @@ import rectangle from '../../assets/Rectangle.png'
             fetchData();
           }, []);
 
-        const handleImageClick = (image) => {
-          if (selectedImages.includes(image)) {
-            setSelectedImages(selectedImages.filter((selectedImage) => selectedImage !== image));
-          } else {
-            setSelectedImages([...selectedImages, image]);
-          }
-        };
+          const handleImageClick = (image) => {
+            const index = selectedImages.indexOf(image);
+            if (index === -1) {
+              // Image not selected, add it to the selected images
+              setSelectedImages([...selectedImages, image]);
+            } else {
+              // Image already selected, remove it from the selected images
+              const updatedImages = [...selectedImages];
+              updatedImages.splice(index, 1);
+              setSelectedImages(updatedImages);
+            }
+          };
         
         const handleExperienceClick = () => {
             setShowExperience(true);
@@ -54,134 +68,124 @@ import rectangle from '../../assets/Rectangle.png'
             setShowExperience(false);
         };
 
+        const togglePopup = () => {
+          setPopupVisibility(!isPopupVisible);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+        
+
         // Sample data for the room
         const roomData = {
         images: [image1,image2,image3],
         propertyName: 'Sample Property Name',
-        location: 'Icson',
+        location: 'Kerala ',
         rating: 4.5,
         reviews: 10,
         description:
             'This elegant property offers stunning views of the surrounding mountains and is located in the heart of Icson. It features modern amenities, spacious rooms, and a tranquil atmosphere. Perfect for couples and families looking for a peaceful getaway.',
-        duration: '2 nights minimum',
-        cancellationPolicy: '24 hrs before Learn more',
+        duration: '30 min',
+        cancellationPolicy: '24 hrs before ',
         highlights: [
-            'Stunning mountain views',
-            'Modern amenities',
-            'Spacious rooms',
-            'Tranquil atmosphere',
+            '1- Stunning mountain views',
+            '2- Modern amenities',
+            '3- Spacious rooms',
+            '4- Tranquil atmosphere',
         ],
     };
 
         return (
         <>
             <Header />
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 shadow-lg" style={{ marginTop: '270px' }}>
-            <div className="mt-10 ">
-            <div className="carousel flex items-center justify-center">
-          {/* Implement your Carousel component here with the room images */}
-          <img src={roomData.images[0]} alt="Room 1" className="rounded-3xl w-2/3" />
-           <div className="w-1/3 flex flex-col items-center">
-              {roomData.images.slice(1).map((image, index) => (
-                        <img
-                          key={index}
-                          src={image}
-                          alt={`Room ${index + 2}`}
-                          className={`w-full ml-6 ${index === 0 ? 'mb-4' : 'mt-4'} rounded-3xl`}
-                              />
-                                      ))}
-                                 </div>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 " style={{ marginTop: '270px' }}>
+            <div className="mt-10">
+  <div className='shadow-lg p-5'>
+    <div className="carousel flex items-center justify-center relative">
+    <button
+        className="absolute m-4 bg-black text-white px-2 py-2 rounded text-sm save-button " 
+        onClick={() => alert('View Gallery Clicked')} // Add your gallery viewing logic here
+      >
+         <FontAwesomeIcon icon={faBookmark} /> Save
+      </button>
+      <button
+        className="absolute m-4 bg-black text-white px-2 py-2 rounded text-sm share-button " style={{position:'absolute' , top:'86%',right:"80%"}}
+        onClick={() => alert('View Gallery Clicked')} // Add your gallery viewing logic here
+      >
+        <FontAwesomeIcon icon={faShare} />Share
+      </button>
 
-                           </div>
-                    <div className="mt-4 flex items-center justify-between">
-                    {agencyData && (
-                        <>
-                        <h1 className="text-2xl font-bold text-red-700 md:text-3xl">{agencyData.name}</h1>
-                        <p></p>
-                        </>
-                    )}
-                      
-                        <button className="bg-gray-300 hover:bg-gray-500 text-black font-bold text-xl py-6 px-8 rounded media-book-now">
-                          Book Now
-                           </button>
+      <img src={roomData.images[0]} alt="Room 1" className='media-larger-image ' />
 
-                    </div>
-                    <div className="flex items-center mt-2">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-6 w-6 mr-2"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M12 6c2.76 0 5 2.24 5 5 0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5zm0 10c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z"
-                            />
-                        </svg>
-                        <p>{roomData.location}</p>
-                    </div>
-                    {agencyData && (
-                        <div className="flex items-center mt-2">
-                    <p>Rating : {agencyData.rating}</p>
-                        
-                    </div>
-                    ) }
+      {/* "View Gallery" button */}
+      <button
+        className="absolute m-4 bg-black text-white px-4 py-2 text-sm md:text-lg gallery-button " 
+        onClick={() => alert('View Gallery Clicked')} // Add your gallery viewing logic here
+      >
+        View Gallery(12)
+      </button>
+
+      <div className="w-1/3 flex flex-col items-center">
+        {roomData.images.slice(1).map((image, index) => (
+          <img
+            key={index}
+            src={image}
+            alt={`Room ${index + 2}`}
+            className={`w-full ml-6 ${index === 0 ? 'mb-4' : 'mt-4'}`}
+          />
+        ))}
+      </div>
+    </div>
+
+
+
+    <div className="mt-3 flex items-center justify-between ">
+      {agencyData && (
+        <>
+          <h1 className="text-2xl pl-20 font-bold text-red-700 md:text-3xl">{agencyData.name}</h1>
+          <p></p>
+        </>
+      )}
+      <div className='pr-10'> 
+        <button className="bg-red-700 hover:bg-red-500 text-white font-bold text-xl py-2 px-6 rounded media-book-now" onClick={togglePopup}>
+          Book Now
+        </button>
+      </div>
+      
+    </div>
+    <div className="flex items-center mt-2 pl-20">
+      <FontAwesomeIcon icon={faMapMarker} className="h-4 w-6 text-black mr-2" />
+      <p>{roomData.location}</p>
+      {agencyData && (
+        <div className="flex items-center ml-4">
+          <FontAwesomeIcon icon={faStar} className="text-black mr-2 h-4" />
+          <p className="font-semibold">{agencyData.rating}(125 reviews) </p>
+        </div>
+      )}
+    </div>
+  </div>
+                   
                     
-                    <div className="mt-4">
-                        <div className="flex items-center">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-6 w-6 mr-2"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M8 16a4 4 0 01-8 0M16 16a4 4 0 01-8 0"
-                                />
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M16 8a4 4 0 01-8 0 4 4 0 018 0z"
-                                />
-                            </svg>
-                            <p>Duration : {roomData.duration}</p>
-                        </div>
-                        <div className="flex items-center mt-2">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-6 w-6 mr-2"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M6 18L18 6M6 6l12 12"
-                                    />
-                                </svg>
-                            <p>CancellationPolicy : {roomData.cancellationPolicy}</p>
-                        </div>
-                    </div>
+                    <div className="mt-4 pl-24">
                     {agencyData && (
                         <div className="mt-4">
-                        <p className="text-lg text-gray-700">{agencyData.description}</p>
+                        <p className="text-lg ">{agencyData.description}</p>
                     </div>
                     )}
+                        <div className="flex items-center mt-5">
+                        <FontAwesomeIcon icon={faClock} className="text-black mr-4 h-4" />
+                         <p>Duration : {roomData.duration}</p>
+                            
+                        </div>
+                        <div className="flex items-center mt-5">
+                           <FontAwesomeIcon icon={faTimes} className="text-black mr-4 h-6 w-4" />
+                                          <p>CancellationPolicy: {roomData.cancellationPolicy}<span className='text-gray-400'>Learn more</span></p>
+                                </div>
+                    </div>
+                   
                     
 
                     <hr className="my-8" />
                     <div className="mt-4 flex items-center justify-center">
-        <div className="border-2 border-grey w-1/2 rounded-full border-opacity-50 flex justify-center media-switch-thing">
+        <div className="border-2 border-grey  rounded-full border-opacity-50 flex justify-center media-switch-thing">
             <button
                 onClick={handleExperienceClick}
                 className={`text-red-700 font-bold py-2 px-4 rounded-full ${
@@ -202,103 +206,96 @@ import rectangle from '../../assets/Rectangle.png'
     </div>
 
     {showExperience ? (
-    <div className="flex justify-center mt-5 media-details-images ">
-      <div className="flex flex-col items-center mx-4 " onClick={() => handleImageClick("Activity 1")}>
-        <img
-          className={`transition-transform duration-300 ease-in-out block w-56 h-auto cursor-pointer   ${
-            selectedImages.includes("Activity 1") ? "border-4 border-red-700" : ""
-          }`}
-          src={smallslided}
-          alt="Activity 1"
-        />
-        <p className="text-center text-lg font-bold mt-2">Activity 1</p>
-      </div>
-      <div className="flex flex-col items-center mx-4" onClick={() => handleImageClick("Activity 2")}>
-        <img
-          className={`transition-transform duration-300 ease-in-out block w-56 h-auto cursor-pointer ${
-            selectedImages.includes("Activity 2") ? "border-4 border-red-700" : ""
-          }`}
-          src={smallslided}
-          alt="Activity 2"
-        />
-        <p className="text-center text-lg font-bold mt-2">Activity 2</p>
-      </div>
-      <div className="flex flex-col items-center mx-4" onClick={() => handleImageClick("Activity 3")}>
-        <img
-          className={`transition-transform duration-300 ease-in-out block w-56 h-auto cursor-pointer ${
-            selectedImages.includes("Activity 3") ? "border-4 border-red-700" : ""
-          }`}
-          src={smallslided}
-          alt="Activity 3"
-        />
-        <p className="text-center text-lg font-bold mt-2">Activity 3</p>
-      </div>
+      <div className="flex flex-wrap justify-center mt-5 media-details-images">
+      {[1, 2, 3].map((index) => (
+        <div key={index} className="relative flex flex-col items-center mx-4 mt-4 w-48 md:w-ful sm:w-72 l">
+          <img
+            className='transition-transform duration-300 ease-in-out block w-48 h-56 cursor-pointer shadow-lg'
+            src={smallslided}
+            alt={`Activity ${index}`}
+            onClick={() => handleImageClick(`Activity ${index}`)}
+          />
+          <img
+            src={tickImage} 
+            alt="Tick"
+            className="absolute top-5 right-1/4 transform translate-x-1/2 -translate-y-1/2 w-10 h-10"
+            style={{ display: selectedImages.includes(`Activity ${index}`) ? 'block' : 'none' }}
+          />
+
+          <p className="text-center text-lg font-bold mt-2">Activity {index}</p>
+          <div className="border border-gray-400 text-center mt-2 py-2 p-5 shadow-md">
+            <p className="text-lg text-red-700 font-bold">Zip line (30 min)</p>
+            <p className="text-sm text-black font-bold">Below Rs 3456/guest</p>
+          </div>
+        </div>
+      ))}
     </div>
   ) : (
-            <div className="flex flex-col items-center mt-5 p-6 border-2 border-gray-300 rounded-md shadow-lg">
-    <div className="flex items-center mb-4">
-        <div className="flex items-center">
-        <img src={calendar} alt='calendar Image' /><br/>
-        <p className="ml-2">IMP Feature: French Dinner</p>
+    <div className="flex flex-col items-center mt-5 p-6 border-2 border-gray-300 rounded-md shadow-lg">
+      <div className="flex justify-evenly w-full">
+        <div className="text-center">
+          <img src={calendar} alt="Calendar" className='pl-7' />
+          <p className="text-lg text-black text-center">IMP Feature</p>
         </div>
-        <div className="flex items-center ml-4">
-        <img src={calendar} alt='calendar Image' /><br/>
-        <p className="ml-2">12 guest maximum</p>
+        <div className="text-center">
+          <img src={calendar} alt="Calendar" className='pl-7' />
+          <p className="text-lg text-black text-center">IMP Feature</p>
         </div>
-    </div>
-    <div className="flex items-center mb-4">
-        <div className="flex items-center">
-        <img src={calendar} alt='calendar Image' />
-        <p className="ml-2">Imp Feature</p>
+        <div className="text-center">
+          <img src={calendar} alt="Calendar" className='pl-7' />
+          <p className="text-lg text-black text-center">IMP Feature</p>
         </div>
-        <div className="flex items-center ml-4">
-        <img src={calendar} alt='calendar Image' />
-        <p className="ml-2">12 guest maximum</p>
+        <div className="text-center">
+          <img src={calendar} alt="Calendar" className='pl-7' />
+          <p className="text-lg text-black text-center">IMP Feature</p>
         </div>
-    </div>
-    
-        <div className="text-red-700">
-        <h2 className="text-xl font-bold mb-2 text-center">Provider Name</h2>
-        <p className="text-gray-700">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt eros quis nunc
-            consequat, vel placerat purus varius.
+      </div>
+
+      {/* Provider Name Section */}
+      <div className="mt-5 flex items-center" style={{paddingRight:'375px'}}>
+        <div className="bg-gray-500 w-8 h-8 rounded-full mr-3"></div>
+        <h2 className="text-xl font-bold pr-96 text-red-700 ">Provider Name</h2>
+      </div>
+
+      {/* Highlights Section */}
+      <div className="mt-3 pl-24">
+        <p className="text-sm">
+          Highlights ghhd hjujhgd ujuheh hghdhdh ujshhgd hghdhfhf hghdhdhd hgshdgd yhjdhdfjf
+          hhdgdhdfg uyuifhfifh isguikshj hujfgfujd hsjgksjs ghssjjd hsjjsjuu jsjhsh jjsjssu
+          js Pet friendly jhjdjdd ukdjhjdh hjddjh hajshjshjdbhj hhjdhjhdhjj hghjdxcghjdhghfj
+          hghjshdghujdh gshsghdgdh hyujshghjdhgd hyujdhjfkh ghyujshdjd ghdghdfcjh ghsjdghdj
+          ghjdshj ghjdshd ghhjsghdfh ghjshdj hjdkkdhkdjhcdjhdj ghjfghjvhfj hdjdhjdkdf
+          hjdjdjkdkdkdkdkkdkd hjjjs hjjj
         </p>
-        </div>  
-        <div className="text-red-700">
-  <h2 className="text-xl font-bold mb-2">Certifications</h2>
-  <div className="flex items-start"> {/* Use items-start to align items to the start (left) */}
-    <img src={rectangle} className="h-16 w-16 mr-4" /> {/* Adjust height and width as needed */}
-    <img src={rectangle} className="h-16 w-16" /> {/* Adjust height and width as needed */}
-  </div>
-</div>
-  
+      </div>
+
+      {/* Certifications Section */}
+      <div className="mt-5 " style={{paddingRight:'575px'}}>
+        <h2 className="text-xl font-bold text-rose-700">Certifications</h2>
+        <div className="flex justify-evenly">
+        <img src={rectangle} alt="Rectangle Image" className="w-20 h-20" />
+          <img src={rectangle} alt="Rectangle Image" className="w-20 h-20" />
+        </div>
+        <p className="text-sm mt-2">
+          Khhhdhd ghdh ghfhf gdghdhdghd ghfjf hhh
+        </p>
+      </div>
     </div>
     )}    
+    
     <hr className="my-8" />
-
-    <h2 className="text-2xl font-bold mt-8">Highlights</h2>
+   
+    <div className='pl-20'>
+    <h2 className="text-3xl font-bold mt-8">Highlights</h2>
 <div className="mt-4">
     <ul className="list-inside">
         {roomData.highlights.map((highlight, index) => (
             <li key={index} className="flex items-center text-gray-700 mb-2">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 mr-2 text-red-700"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                >
-                    <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                    />
-                </svg>
-                <span className="text-lg">{highlight}</span>
+               <span className="text-lg text-black font-medium">{highlight}</span>
             </li>
         ))}
     </ul>
+</div>
 </div>
 
 
@@ -306,130 +303,128 @@ import rectangle from '../../assets/Rectangle.png'
 
 
 
+                        <div className='pl-20'>
 
-
-                    <h2 className="text-2xl font-bold mt-8">Location</h2>
-                    <div className="mt-4 ml-10 w-full media-map" >
+                    <h2 className="text-3xl font-bold mt-8">Location</h2>
+                    <div className="mt-4  w-full media-map" >
                       <img src={map} alt='Map' />
                       <img src={map2} alt='Map' />
                     </div>
 
                     <div className="max-w-7xl mx-auto border-t border-gray-300 p-8">
+</div>
+                    <hr  />
 
-                    <hr className="my-8" />
-
-    <div className="flex flex-col mt-16 ">
+                    <div className="flex flex-col mt-5  ">
         <h2 className="text-3xl font-bold mb-8">Reviews and Ratings</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        <div className="p-4 bg-white rounded-lg shadow-md">
-            <div className="font-bold">Cleanliness</div>
+      
+      <div className='flex justify-around items-center'>
+      <div className='flex flex-col justify-center'>
+        <h2 className='text-4xl font-bold text-red-700 pt-2'>4.2</h2>
+        <div className='flex items-center'>
+ 
+    {[...Array(5)].map((_, index) => (
+      <FontAwesomeIcon key={index} icon={faStar} className='text-black h-4 w-4 pt-2' />
+    ))}
+  </div>
+        <p className='text-gray-400 font-semibold text-2xl pt-2'>(148 reviews)</p>
+      </div>
+
+        <div className="flex flex-col items-end">
+          
+        <div className="flex items-center justify-center">
+            <div className="mr-2">Staff</div>
             <div className="flex items-center mt-1">
-            <div className="h-2 w-40 bg-red-700 rounded"></div>
-            <span className="ml-2">4.9</span>
-            </div>
-        </div>
-
-        <div className="p-4 bg-white rounded-lg shadow-md">
-            <div className="font-bold">Value for money</div>
-            <div className="flex items-center mt-1">
-            <div className="h-2 w-40 bg-red-700 rounded"></div>
-            <span className="ml-2">4.4</span>
-            </div>
-        </div>
-
-        <div className="p-4 bg-white rounded-lg shadow-md">
-            <div className="font-bold">Staff</div>
-            <div className="flex items-center mt-1">
-            <div className="h-2 w-40 bg-red-700 rounded"></div>
-            <span className="ml-2">4.0</span>
-            </div>
-        </div>
-
-        <div className="p-4 bg-white rounded-lg shadow-md">
-            <div className="font-bold">Comfort</div>
-            <div className="flex items-center mt-1">
-            <div className="h-2 w-40 bg-red-700 rounded"></div>
-            <span className="ml-2">4.5</span>
-            </div>
-        </div>
-
-        </div>
-    </div>
-    <div className="mt-8">
-        <div className="border-t border-gray-300 py-4 flex flex-col items-start md:flex md:flex-row">
-            <div className="rounded-full h-12 w-12 overflow-hidden">
-                <img src="https://a0.muscache.com/im/pictures/user/421215d1-efdc-4071-af9a-352e74a9958a.jpg?im_w=240" alt="Vibhore" className="w-full h-full rounded-full object-cover" />
-            </div>
-            <div className="ml-4">
-                <h3 className="text-xl font-bold">Vibhore</h3>
-                <div className="flex items-center mt-2">
-                    <div className="flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="#FFD700" viewBox="0 0 24 24" width="20" height="20">
-                            <path d="M12 2L9.91 8.21L3.5 9.27l5.27 4.82l-1.5 6.19L12 16.75l5.73 3.53l-1.5-6.19l5.27-4.82l-6.41-1.06L12 2m0-2l3.53 7.29l7.97 1.32l-6.12 5.61l1.5 7.47L12 18.77V4z" />
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="#FFD700" viewBox="0 0 24 24" width="20" height="20">
-                            <path d="M12 2L9.91 8.21L3.5 9.27l5.27 4.82l-1.5 6.19L12 16.75l5.73 3.53l-1.5-6.19l5.27-4.82l-6.41-1.06L12 2m0-2l3.53 7.29l7.97 1.32l-6.12 5.61l1.5 7.47L12 18.77V4z" />
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="#FFD700" viewBox="0 0 24 24" width="20" height="20">
-                            <path d="M12 2L9.91 8.21L3.5 9.27l5.27 4.82l-1.5 6.19L12 16.75l5.73 3.53l-1.5-6.19l5.27-4.82l-6.41-1.06L12 2m0-2l3.53 7.29l7.97 1.32l-6.12 5.61l1.5 7.47L12 18.77V4z" />
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="#FFD700" viewBox="0 0 24 24" width="20" height="20">
-                            <path d="M12 2L9.91 8.21L3.5 9.27l5.27 4.82l-1.5 6.19L12 16.75l5.73 3.53l-1.5-6.19l5.27-4.82l-6.41-1.06L12 2m0-2l3.53 7.29l7.97 1.32l-6.12 5.61l1.5 7.47L12 18.77V4z" />
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="#FFD700" viewBox="0 0 24 24" width="20" height="20">
-                            <path d="M12 2L9.91 8.21L3.5 9.27l5.27 4.82l-1.5 6.19L12 16.75l5.73 3.53l-1.5-6.19l5.27-4.82l-6.41-1.06L12 2m0-2l3.53 7.29l7.97 1.32l-6.12 5.61l1.5 7.47L12 18.77V4z" />
-                        </svg>
-                    </div>
-                    <span className="ml-2 text-gray-700">4.5</span>
-                </div>
-                <p className="mt-2">The place is a 10/10 and Nilesh is a great host. The location, the view, and the interior are beyond amazing. The photos don't do justice to the view, which is mesmerizing. Definitely recommend staying here if available!</p>
-                
-            </div>
-        </div>
-    </div>
-
-    <div className="mt-8">
-    <div className="border-t border-gray-300 py-4 flex flex-col items-start md:flex md:flex-row">
-            <div className="rounded-full h-12 w-12 overflow-hidden">
-                <img src="https://a0.muscache.com/im/pictures/user/User-97375290/original/34b5070a-091a-4cb7-9683-49083cc6e10b.jpeg?im_w=240" alt="Vibhore" className="h-full w-full object-cover" />
-            </div>
-            <div className="ml-4">
-                <h3 className="text-xl font-bold">Bharti</h3>
-                <div className="flex items-center mt-1">
-                    <div className="flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="#FFD700" viewBox="0 0 24 24" width="20" height="20">
-                            <path d="M12 2L9.91 8.21L3.5 9.27l5.27 4.82l-1.5 6.19L12 16.75l5.73 3.53l-1.5-6.19l5.27-4.82l-6.41-1.06L12 2m0-2l3.53 7.29l7.97 1.32l-6.12 5.61l1.5 7.47L12 18.77V4z" />
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="#FFD700" viewBox="0 0 24 24" width="20" height="20">
-                            <path d="M12 2L9.91 8.21L3.5 9.27l5.27 4.82l-1.5 6.19L12 16.75l5.73 3.53l-1.5-6.19l5.27-4.82l-6.41-1.06L12 2m0-2l3.53 7.29l7.97 1.32l-6.12 5.61l1.5 7.47L12 18.77V4z" />
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="#FFD700" viewBox="0 0 24 24" width="20" height="20">
-                            <path d="M12 2L9.91 8.21L3.5 9.27l5.27 4.82l-1.5 6.19L12 16.75l5.73 3.53l-1.5-6.19l5.27-4.82l-6.41-1.06L12 2m0-2l3.53 7.29l7.97 1.32l-6.12 5.61l1.5 7.47L12 18.77V4z" />
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="#FFD700" viewBox="0 0 24 24" width="20" height="20">
-                            <path d="M12 2L9.91 8.21L3.5 9.27l5.27 4.82l-1.5 6.19L12 16.75l5.73 3.53l-1.5-6.19l5.27-4.82l-6.41-1.06L12 2m0-2l3.53 7.29l7.97 1.32l-6.12 5.61l1.5 7.47L12 18.77V4z" />
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="#FFD700" viewBox="0 0 24 24" width="20" height="20">
-                            <path d="M12 2L9.91 8.21L3.5 9.27l5.27 4.82l-1.5 6.19L12 16.75l5.73 3.53l-1.5-6.19l5.27-4.82l-6.41-1.06L12 2m0-2l3.53 7.29l7.97 1.32l-6.12 5.61l1.5 7.47L12 18.77V4z" />
-                        </svg>
-                    </div>
-                    <span className="ml-2 text-gray-700">5.0</span>
-                </div>
-                <p className="mt-2">The place is a 10/10 and Nilesh is a great host. The location, the view, and the interior are beyond amazing. The photos don't do justice to the view, which is mesmerizing. Definitely recommend staying here if available!</p>
+            <div className="h-2 w-80 bg-red-700 rounded"></div>
             
             </div>
         </div>
-    </div>
 
-    <div className="flex justify-center mt-8">
-        <button className="bg-red-700 hover:bg-red-500 text-white font-bold py-2 px-4 rounded">
-        Show all 54 reviews
-        </button>
+        <div className="flex items-center justify-center">
+            <div className="mr-2">Facilites</div>
+            <div className="flex items-center mt-1">
+            <div className="h-2 w-80 bg-red-700 rounded"></div>
+            
+            </div>
+        </div>
+
+        <div className="flex items-center justify-center">
+            <div className="mr-2">Value for money</div>
+            <div className="flex items-center mt-1">
+            <div className="h-2 w-80 bg-red-700 rounded"></div>
+            
+            </div>
+        </div>
+
+        <div className="flex items-center justify-center">
+            <div className="mr-2">Cleanliness</div>
+            <div className="flex items-center mt-1">
+            <div className="h-2 w-80 bg-red-700 rounded"></div>
+            
+            </div>
+        </div>
+        <div className="flex items-center justify-center">
+            <div className="mr-2">Comfort</div>
+            <div className="flex items-center mt-1">
+            <div className="h-2 w-80 bg-red-700 rounded"></div>
+            
+            </div>
+        </div>
+
+        </div>
+        </div>
     </div>
+    <div className="mt-8">
+    <div className="border-t border-gray-300 py-4 flex flex-col items-start md:flex md:flex-row">
+        <div className="rounded-full h-14 overflow-hidden bg-gray-500 flex items-center justify-center w-14 md:w-20 ">
+            {/* You can add an icon or initials inside the circle if you want */}
+        </div>
+        <div className="ml-4">
+            <h3 className="text-2xl font-bold">Vibhore</h3>
+            <div className="flex items-center ">
+            <p className='mt-2 mr-2'>New Delhi</p>
+            <div className='flex items-center'>
+ 
+             {[...Array(5)].map((_, index) => (
+              <FontAwesomeIcon key={index} icon={faStar} className='text-black h-4 w-4 pt-2' />
+          ))}
+           </div>
+                <span className="ml-2 mt-2 text-gray-700 ">4.5</span>
+            </div>
+            <p className="mt-2">The place is a 10/10 and Nilesh is a great host. The location, the view, and the interior are beyond amazing. The photos don't do justice to the view, which is mesmerizing. Definitely recommend staying here if available!</p>
+        </div>
+    </div>
+</div>
+
+<div className="mt-8">
+    <div className="border-t border-gray-300 py-4 flex flex-col items-start md:flex md:flex-row">
+        <div className="rounded-full h-14 overflow-hidden bg-gray-500 flex items-center justify-center w-14 md:w-20">
+          
+        </div>
+        <div className="ml-4">
+            <h3 className="text-2xl font-bold">Bharti</h3>
+            <div className="flex items-center ">
+            <p className='mt-2 mr-2'>New Delhi</p>
+            <div className='flex items-center'>
+ 
+             {[...Array(5)].map((_, index) => (
+              <FontAwesomeIcon key={index} icon={faStar} className='text-black h-4 w-4 pt-2' />
+          ))}
+           </div>
+                <span className="ml-2 mt-2 text-gray-700">5.0</span>
+            </div>
+            <p className="mt-2">The place is a 10/10 and Nilesh is a great host. The location, the view, and the interior are beyond amazing. The photos don't do justice to the view, which is mesmerizing. Definitely recommend staying here if available!</p>
+        </div>
+    </div>
+</div>
+
+
+
     </div>
     <hr className="my-8" />
-    <h2 className="text-3xl font-bold mb-8">Other Activities by Provider</h2>
-    <div className="flex  mt-5 space-x-4 mb-8">
+    <div className='pl-20'>
+    <h2 className="text-xl font-bold mb-8 ">Other Activities by Provider</h2>
+    <div className="flex mt-5 space-x-4 mb-8">
                                 {/* Activity card 1 */}
                                 <div className="flex flex-col items-center">
                                 
@@ -439,46 +434,32 @@ import rectangle from '../../assets/Rectangle.png'
                                         alt="Activity 1"
                                     />
                                     <p className="text-center text-lg font-bold mt-2">Activity 1</p>
-                                    <p className="text-center text-sm text-gray-700">4.5 (24 Reviews)</p>
-                                    <p className="text-red-700 font-bold mt-1">Rs 6745/guest</p>
-                                </div>
-                                {/* Activity card 2 */}
-                                <div className="flex flex-col items-center">
-                                    <img
-                                        className="transition-transform duration-300 ease-in-out block w-72 h-auto"
-                                        src={otheractivity}
-                                        alt="Activity 2"
-                                    />
-                                    <p className="text-center text-lg font-bold mt-2">Activity 2</p>
-                                    <p className="text-center text-sm text-gray-700">4.8 (36 Reviews)</p>
-                                    <p className="text-red-700 font-bold mt-1">Rs 7899/guest</p>
-                                </div>
-                                {/* Activity card 3 */}
-                                <div className="flex flex-col items-center">
-                                    <img
-                                        className="transition-transform duration-300 ease-in-out block w-72 h-auto"
-                                        src={otheractivity}
-                                        alt="Activity 3"
-                                    />
-                                    <p className="text-center text-lg font-bold mt-2">Activity 3</p>
-                                    <p className="text-center text-sm text-gray-700">4.2 (18 Reviews)</p>
-                                    <p className="text-red-700 font-bold mt-1">Rs 5499/guest</p>
-                                </div>
+                                    <p className="text-black font-bold mt-1 text-sm">Rs 6745/guest</p>
+                                    <p className="text-center text-sm text-gray-700 mt-1 font-semibold">4.5 (24 Reviews)</p>
+                                  
+                                </div> 
                             </div>
-                            <div className="flex items-center justify-end mt-4 space-x-4 mb-6 md:text-sm">
+                            </div>
+                            {isPopupVisible && <Booking onClose={togglePopup} />}
+
+{/* Continue Booking button */}
+<div className="flex items-center justify-end mt-4 space-x-4 mb-6 md:text-sm">
+  <button
+    className="bg-red-700 hover:bg-red-500 text-white font-bold py-2 px-4 rounded mb-5"
+    style={{ backgroundColor: "#b91c1c", color: "white" }}
+  >
+    Save and Share
+  </button>
+
+  <div className="flex items-center justify-end mt-4 space-x-4 mb-6 md:text-sm">
     <button
-        className="bg-red-700 hover:bg-red-500 text-white font-bold py-2 px-4 rounded mb-5"
-        style={{ backgroundColor: "#b91c1c", color: "white" }}
+      className="bg-red-700 hover:bg-red-500 text-white font-bold py-2 px-4 rounded mb-5 mt-2"
+      style={{ backgroundColor: "#b91c1c", color: "white" }}
+      onClick={togglePopup}
     >
-        Save and Share
+      Continue Booking
     </button>
-   
-   <Link to='/booking'> <button
-        className="bg-red-700 hover:bg-red-500 text-white font-bold py-2 px-4 rounded mb-5"
-        style={{ backgroundColor: "#b91c1c", color: "white" }}
-    >
-        Continue Booking
-    </button></Link>
+  </div>
 </div>
         </div>
     </div>

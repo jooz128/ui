@@ -38,17 +38,17 @@ const Header = () => {
                     {/* logo section */}
                     <div className='font-bold text-2xl cursor-pointer flex items-center gap-4'>
                         <BookOpenIcon className='w-7 h-7 text-blue-600' />
-                        <Link to='/'><span className='text-gray-200'>Travilio</span></Link>
+                        <Link to='/'><span className='text-gray-200'>TravelBeem</span></Link>
                     </div>
                     {/* Menu icon */}
                     <div onClick={() => setOpen(!open)} className='absolute right-16 top-8 cursor-pointer md:hidden w-7 h-7 text-white'>
                         {open ? <XMarkIcon /> : <Bars3BottomRightIcon />}
                     </div>
                     {/* link items */}
-                    <ul className={`md:flex md:items-center md:pb-0  pb-12 absolute md:static bg-black md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pr-6 pl-9 transition-all duration-500 ease-in ${open ? 'top-12' : 'top-[-490px]'}`}>
+                    <ul className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-black md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pr-6 pl-9 transition-all duration-500 ease-in ${open ? 'top-12' : 'top-[-490px]'}`}>
                         {Links.map((link, index) => (
-                            <li key={index} className='md:ml-8 md:my-0 font-semibold'>
-                                <a href={link.link} className='text-gray-200 hover:text-blue-400 px-4 duration-500'>{link.name}</a>
+                            <li key={index} className='md:ml-8 md:my-0 font-bold'>
+                                <a href={link.link} className='text-gray-200 hover:text-gray-400 px-4 transition duration-500'>{link.name}</a>
                             </li>
                         ))}
                         <img src={person} alt='Person Logo' className='w-6 h-6 ml-4' />

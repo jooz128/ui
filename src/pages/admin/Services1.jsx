@@ -1,44 +1,21 @@
 import React, { useState } from 'react';
 import ChatBox from '../../components/chatbox/ChatBox';
 import BrandName from '../../components/BrandName/BrandName';
-const ServicePage = () => {
-  const [addresses, setAddresses] = useState([{ houseNumber: '', pincode: '', location: '' }]);
-  
+
+const Services1 = () => {
+    const [addresses, setAddresses] = useState([{ houseNumber: '', pincode: '', location: '' }]);
+  const [cancellationPolicy, setCancellationPolicy] = useState(false);
+  const [reschedulePolicy, setReschedulePolicy] = useState(false);
+
   const handleAddAddress = () => {
     setAddresses([...addresses, { houseNumber: '', pincode: '', location: '' }]);
   };
-
-return (
-    <>
-   <BrandName />
- <div className="flex justify-between">
-      <div className="w-2/3 p-8">
-        <h1 className="text-3xl font-bold mb-6">What type of service will guests have?</h1>
-
-        <div className="flex flex-col mb-6">
-          <div className="mb-2">
-            <div className="p-2 border border-gray-300 rounded-lg">
-              <input type="checkbox" id="entirePlace" className="mr-2" />
-              <label htmlFor="entirePlace">An entire place</label>
-            </div>
-          </div>
-
-          <div className="mb-2">
-            <div className="p-2 border border-gray-300 rounded-lg">
-              <input type="checkbox" id="room" className="mr-2" />
-              <label htmlFor="room">A room</label>
-            </div>
-          </div>
-
-          <div>
-            <div className="p-2 border border-gray-300 rounded-lg">
-              <input type="checkbox" id="sharedPlace" className="mr-2" />
-              <label htmlFor="sharedPlace">A shared place</label>
-            </div>
-          </div>
-        </div>
-
-        {addresses.map((address, index) => (
+  return (
+    <> 
+     <BrandName />
+    <div className="flex justify-between">
+        <div className="w-2/3 p-8">
+         {addresses.map((address, index) => (
           <div key={index} className="mb-6">
           <h2 className='text-xl font-bold'>Your Address</h2>
             <div className="flex mb-2">
@@ -106,14 +83,58 @@ return (
         <button onClick={handleAddAddress} className="bg-red-700 text-white p-2 hover:bg-red-600">
          + Add Another Address
         </button>
+        <div className="mt-6">
+          <h2 className="text-2xl font-bold mb-4">Cancellation Policy</h2>
+          <div className="p-2 ">
+            <input
+              type="checkbox"
+              id="cancellationPolicy"
+              className="mr-2"
+              checked={cancellationPolicy}
+              onChange={() => setCancellationPolicy(!cancellationPolicy)}
+            />
+            <label htmlFor="cancellationPolicy">Share your exact location</label>
+          </div>
+          <div className="p-2 ">
+            <input
+              type="checkbox"
+              id="cancellationPolicyOther"
+              className="mr-2"
+              checked={cancellationPolicy}
+              onChange={() => setCancellationPolicy(!cancellationPolicy)}
+            />
+            <label htmlFor="cancellationPolicyOther">Share your exact location</label>
+          </div>
         </div>
 
-          <ChatBox />
-
-    </div>
-    
+        <div className="mt-6">
+          <h2 className="text-2xl font-bold mb-4">Reschedule Policy</h2>
+          <div className="p-2 ">
+            <input
+              type="checkbox"
+              id="reschedulePolicy"
+              className="mr-2"
+              checked={reschedulePolicy}
+              onChange={() => setReschedulePolicy(!reschedulePolicy)}
+            />
+            <label htmlFor="reschedulePolicy">Share your exact location</label>
+          </div>
+          <div className="p-2">
+            <input
+              type="checkbox"
+              id="reschedulePolicyOther"
+              className="mr-2"
+              checked={reschedulePolicy}
+              onChange={() => setReschedulePolicy(!reschedulePolicy)}
+            />
+            <label htmlFor="reschedulePolicyOther">Share your exact location</label>
+          </div>
+        </div>
+        </div>
+        <ChatBox />
+        </div>
     </>
-  );
-};
+  )
+}
 
-export default ServicePage;
+export default Services1

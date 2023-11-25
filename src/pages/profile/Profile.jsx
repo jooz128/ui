@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/Footer';
@@ -8,22 +8,41 @@ const Profile = () => {
   const [passportCopy, setPassportCopy] = useState(null);
   const [aadharCopy, setAadharCopy] = useState(null);
   const [panCopy, setPanCopy] = useState(null);
+  const [showSidebar, setShowSidebar] = useState(true);
 
   const handleFileChange = (event, setFile) => {
     const file = event.target.files[0];
     setFile(file);
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setShowSidebar(window.innerWidth > 768); // Adjust the width as needed
+    };
+
+    // Initial check
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   return (
     <>
       <Header />
-      <div className="flex flex-col md:flex-row" style={{ marginTop: '250px' }}>
-       <Sidebar />
+      <div className="flex flex-col md:flex-row" style={{ marginTop: '275px' }}>
+      
+      {showSidebar && <Sidebar />}
 
         <div className="flex-grow p-6">
           {/* Hello and Name */}
           <div className="text-center">
-            <h1 className="text-3xl font-bold">Hello, John Doe!</h1>
-            <p className="text-gray-600">Some random text here.</p>
+            <h1 className="text-2xl font-semibold text-red-700">Hello, Garima!</h1>
+            <p className="font-base">Helooo dghfgfh gdhjfgvhd ghcjhfghjfgf hjdfhghjfk ghjdshghdfjh dhjdh.</p>
           </div>
 
           {/* Address */}
