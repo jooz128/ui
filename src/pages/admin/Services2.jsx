@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ChatBox from '../../components/chatbox/ChatBox';
 import BrandName from '../../components/BrandName/BrandName';
+import { BookOpenIcon, Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/solid';
 
 const Services2 = () => {
     const [guestsCount, setGuestsCount] = useState(1);
@@ -9,6 +10,8 @@ const Services2 = () => {
   const [bedsCount, setBedsCount] = useState(1);
   const [amenities, setAmenities] = useState(['Wi-Fi', 'Parking', 'Kitchen']);
   const [newAmenity, setNewAmenity] = useState('');
+  const [isChatboxVisible, setChatboxVisibility] = useState(false);
+
 
   const handleIncrement = (setter) => {
     setter((prevCount) => prevCount + 1);
@@ -31,12 +34,15 @@ const Services2 = () => {
     updatedAmenities.splice(index, 1);
     setAmenities(updatedAmenities);
   };
+  const toggleChatbox = () => {
+    setChatboxVisibility(!isChatboxVisible);
+  };
 
   return (
     <>
      <BrandName />
      <div className="flex justify-between">
-    <div className="w-2/3 p-8">
+    <div className="w-3/4 md:w-2/3 p-8">
          <div className="mt-6">
           <h2 className="text-2xl font-bold mb-4">Share some basics about your place, you will add more details</h2>
           <div className='p-6'>
@@ -132,7 +138,12 @@ const Services2 = () => {
   </div>
 </div>
     </div>
-    <ChatBox />
+    <div className="lg:hidden  cursor-pointer" onClick={toggleChatbox}>
+          <Bars3BottomRightIcon className="h-8 w-8 text-gray-600" />
+        </div>
+
+        {/* ChatBox (conditionally rendered based on visibility) */}
+        {isChatboxVisible && <ChatBox toggleChatbox={toggleChatbox} />}
     </div>
     </>
   )

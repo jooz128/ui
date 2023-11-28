@@ -14,7 +14,7 @@ const Hero = () => {
     };
 
     return (
-        <div className="" style={{ marginTop: '238px', overflow: 'hidden' }}>
+        <div className="" style={{ marginTop: '205px', overflow: 'hidden' }}>
             {/* Adjusted the margin top to move the Hero section below the Navbar */}
             <Slider {...settings}>
                 <div className="slider-item">

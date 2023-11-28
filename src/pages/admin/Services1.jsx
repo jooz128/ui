@@ -1,20 +1,26 @@
 import React, { useState } from 'react';
 import ChatBox from '../../components/chatbox/ChatBox';
 import BrandName from '../../components/BrandName/BrandName';
+import { BookOpenIcon, Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/solid';
 
 const Services1 = () => {
     const [addresses, setAddresses] = useState([{ houseNumber: '', pincode: '', location: '' }]);
   const [cancellationPolicy, setCancellationPolicy] = useState(false);
   const [reschedulePolicy, setReschedulePolicy] = useState(false);
+  const [isChatboxVisible, setChatboxVisibility] = useState(false);
 
   const handleAddAddress = () => {
     setAddresses([...addresses, { houseNumber: '', pincode: '', location: '' }]);
+  };
+
+  const toggleChatbox = () => {
+    setChatboxVisibility(!isChatboxVisible);
   };
   return (
     <> 
      <BrandName />
     <div className="flex justify-between">
-        <div className="w-2/3 p-8">
+        <div className="w-full md:w-2/3 p-8">
          {addresses.map((address, index) => (
           <div key={index} className="mb-6">
           <h2 className='text-xl font-bold'>Your Address</h2>
@@ -131,7 +137,12 @@ const Services1 = () => {
           </div>
         </div>
         </div>
-        <ChatBox />
+        <div className="lg:hidden  cursor-pointer" onClick={toggleChatbox}>
+          <Bars3BottomRightIcon className="h-8 w-8 text-gray-600" />
+        </div>
+
+        {/* ChatBox (conditionally rendered based on visibility) */}
+        {isChatboxVisible && <ChatBox toggleChatbox={toggleChatbox} />}
         </div>
     </>
   )

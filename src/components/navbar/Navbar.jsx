@@ -34,21 +34,21 @@ const Header = () => {
     return (
         <>
             <div className='shadow-md w-full fixed top-0 left-0 z-50'>
-                <div className='md:flex items-center justify-between bg-black md:px-10 px-7 py-8 z-50 overflow-x-hidden '>
+                <div className='md:flex items-center justify-between bg-black md:px-10 px-7 py-7 z-50 overflow-x-hidden '>
                     {/* logo section */}
                     <div className='font-bold text-2xl cursor-pointer flex items-center gap-4'>
                         <BookOpenIcon className='w-7 h-7 text-blue-600' />
                         <Link to='/'><span className='text-gray-200'>TravelBeem</span></Link>
                     </div>
                     {/* Menu icon */}
-                    <div onClick={() => setOpen(!open)} className='absolute right-16 top-8 cursor-pointer md:hidden w-7 h-7 text-white'>
+                    <div onClick={() => setOpen(!open)} className='absolute right-16 top-8 cursor-pointer md:hidden w-7 h-7 text-gray-200'>
                         {open ? <XMarkIcon /> : <Bars3BottomRightIcon />}
                     </div>
                     {/* link items */}
-                    <ul className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-black md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pr-6 pl-9 transition-all duration-500 ease-in ${open ? 'top-12' : 'top-[-490px]'}`}>
+                    <ul className={`md:flex md:items-center p-11 md:p-0 md:pb-0 pb-12 absolute md:static bg-black md:z-auto z-50 left-0 w-full md:w-auto md:pl-0 pr-6 pl-9 transition-all duration-500 ease-in ${open ? 'top-12' : 'top-[-490px]'}`}>
                         {Links.map((link, index) => (
                             <li key={index} className='md:ml-8 md:my-0 font-bold'>
-                                <a href={link.link} className='text-gray-200 hover:text-gray-400 px-4 transition duration-500'>{link.name}</a>
+                                <a href={link.link} className='text-gray-200 hover:text-gray-400 px-4 text-base transition duration-500'>{link.name}</a>
                             </li>
                         ))}
                         <img src={person} alt='Person Logo' className='w-6 h-6 ml-4' />

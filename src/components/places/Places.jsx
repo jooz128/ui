@@ -16,7 +16,7 @@ function Second() {
   };
 
   return (
-    <div className="max-w-full overflow-hidden relative flex justify-center items-center mt-4 md:pb-10 md:ml-7">
+    <div className="max-w-full overflow-hidden relative flex justify-center items-center mt-4 md:pb-10 ml-10 md:ml-7">
       <div className="w-full overflow-hidden flex flex-col items-center pr-6">
         <h1 className="text-red-700 text-lg font-bold text-left mb-2 md:text-4xl">POPULAR PLACES</h1>
         <div className="flex flex-col justify-center items-center md:flex md:flex-row ">
@@ -53,8 +53,8 @@ function Second() {
             />
           )}
         </div>
-        <h1 className="text-red-700 text-lg font-bold mt-8 mb-2 md:text-4xl">Top Activities</h1>
-        <div className="flex justify-center items-center">
+        <h1 className="text-red-700 text-lg font-bold mt-2 md:mr-0 md:mt-8 mb-2 md:text-4xl">Top Activities</h1>
+        <div className="flex justify-center items-center mr-4 md:mr-0">
           {currentSlide !== 1 && (
             <FontAwesomeIcon
               icon={faChevronLeft}

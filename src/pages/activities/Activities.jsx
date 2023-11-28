@@ -204,7 +204,7 @@ const Activities = () => {
   return (
     <>
       <Header />
-      <div className="bg-white md:mt-24" style={{ marginTop: '260px' }}>
+      <div className="bg-white activities-container" >
     
   <div className="flex justify-center items-center flex-wrap activities-button-media ">
   <FontAwesomeIcon
@@ -229,7 +229,7 @@ const Activities = () => {
           />
   </div>
 </div>
-<div className="mt-4  pl-4 flex justify-end mr-5">
+<div className="mt-4 pl-4 flex justify-end mr-5">
   <select
     value={selectedSortOption}
     onChange={handleSortOptionChange}
@@ -244,7 +244,7 @@ const Activities = () => {
 </div>
       <div className="flex" >
       {/* Left section for filters and sorting */}
-        <div className="w-8/12 bg-gray-100 p-4 md:w-1/4 mt-10">
+        <div className="w-8/12 bg-gray-100 p-4 md:w-1/4 mt-6">
           <div className="mb-4 ">
             <h2 className="text-2xl font-bold mb-2 leading-8">FILTERS</h2>
             <hr className="my-4" />
@@ -314,7 +314,7 @@ const Activities = () => {
           onChange={handleMinPriceChange}
           value={minPrice}
         />
-        <span className='flex items-center justify-center font-bold mr-1'>to</span>
+        <span className='flex items-center ml-6 md:ml-0 font-bold mr-1'>to</span>
         <input
           type="text"
           placeholder="Max"
@@ -322,7 +322,7 @@ const Activities = () => {
           onChange={handleMaxPriceChange}
           value={maxPrice}
         />
-        <button className="bg-black text-white py-1 px-1 rounded-xl w-16 md:w-12 md:h-8" onClick={applyPriceFilter}>
+        <button className="bg-black text-white py-1 px-1 rounded-xl w-16 mt-4 md:mt-0 md:w-12 md:h-8" onClick={applyPriceFilter}>
           Go
         </button>
       </div>

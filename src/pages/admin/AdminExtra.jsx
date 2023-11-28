@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import ChatBox from '../../components/chatbox/ChatBox';
 import BrandName from '../../components/BrandName/BrandName';
+import { BookOpenIcon, Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/solid';
 
 const AdminExtra = () => {
   const [description, setDescription] = useState('');
   const [cancellationPolicy, setCancellationPolicy] = useState('');
+  const [isChatboxVisible, setChatboxVisibility] = useState(false);
+
+  const toggleChatbox = () => {
+    setChatboxVisibility(!isChatboxVisible);
+  };
   
   const handleDescriptionChange = (e) => {
     setDescription(e.target.value);
@@ -20,7 +26,7 @@ const AdminExtra = () => {
     <>
     <BrandName />
     <div className="flex justify-between">
-    <div className="w-2/3 p-8">
+    <div className="w-full md:w-2/3 p-8">
       <h1 className="text-2xl font-bold mb-1">Short title, keyword, description</h1>
       <p className="text-gray-500 mb-4 text-sm">Make sure it matches the name on your govt ID</p>
       <div className="mb-6">
@@ -72,7 +78,12 @@ const AdminExtra = () => {
 
     </div>
 
-    <ChatBox />
+    <div className="lg:hidden  cursor-pointer" onClick={toggleChatbox}>
+          <Bars3BottomRightIcon className="h-8 w-8 text-gray-600" />
+        </div>
+
+        {/* ChatBox (conditionally rendered based on visibility) */}
+        {isChatboxVisible && <ChatBox toggleChatbox={toggleChatbox} />}
     </div>
     </>
   );

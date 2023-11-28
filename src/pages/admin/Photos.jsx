@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import ChatBox from '../../components/chatbox/ChatBox';
 import BrandName from '../../components/BrandName/BrandName';
+import { BookOpenIcon, Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/solid';
 
 const PhotoUploadPage = () => {
   const [photos, setPhotos] = useState([]);
+  const [isChatboxVisible, setChatboxVisibility] = useState(false);
+
+  const toggleChatbox = () => {
+    setChatboxVisibility(!isChatboxVisible);
+  };
 
   const handleAddPhoto = () => {
     // For simplicity, you can implement file input logic here to handle photo upload.
@@ -15,7 +21,7 @@ const PhotoUploadPage = () => {
     <>
     <BrandName />
     <div className="flex justify-between">
-      <div className="w-2/3 p-8">
+      <div className="w-full md:w-2/3 p-8">
         <h1 className="text-3xl font-bold mb-4">Add some photos of your service</h1>
         <p className="text-sm text-gray-500 mb-4">
           In case of multiple addresses or locations, add here or change gfhffy fuygyfjhg hhdjd hyjfhcgh ujdhghdj ghjhgdx yhsjhdgd yhjdhghd gtyhfdgyh gtydujhgdyujdh ujdhghujd ghjfcghfjhg yhujdhyhd
@@ -46,7 +52,12 @@ const PhotoUploadPage = () => {
         </button>
       </div>
 
-     <ChatBox />
+      <div className="lg:hidden  cursor-pointer" onClick={toggleChatbox}>
+          <Bars3BottomRightIcon className="h-8 w-8 text-gray-600" />
+        </div>
+
+        {/* ChatBox (conditionally rendered based on visibility) */}
+        {isChatboxVisible && <ChatBox toggleChatbox={toggleChatbox} />}
     </div>
     </>
   );

@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import ChatBox from '../../components/chatbox/ChatBox';
 import BrandName from '../../components/BrandName/BrandName';
+import { BookOpenIcon, Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/solid';
 
 const PlaceSelectorPage = () => {
   const [selectedPlaces, setSelectedPlaces] = useState([]);
+  const [isChatboxVisible, setChatboxVisibility] = useState(false);
+
+  const toggleChatbox = () => {
+    setChatboxVisibility(!isChatboxVisible);
+  };
 
   const handlePlaceClick = (index) => {
     const updatedSelectedPlaces = [...selectedPlaces];
@@ -47,7 +53,12 @@ const PlaceSelectorPage = () => {
           <div className="flex flex-wrap">{renderPlaces()}</div>
         </div>
 
-      <ChatBox />
+        <div className="lg:hidden  cursor-pointer" onClick={toggleChatbox}>
+          <Bars3BottomRightIcon className="h-8 w-8 text-gray-600" />
+        </div>
+
+        {/* ChatBox (conditionally rendered based on visibility) */}
+        {isChatboxVisible && <ChatBox toggleChatbox={toggleChatbox} />}
       </div>
     </>
   );

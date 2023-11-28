@@ -200,7 +200,7 @@ const [activityNames, setActivityNames] = useState([]);
   return (
     <>
       <Header />
-      <div className="bg-white md:mt-24" style={{ marginTop: '255px' }}>
+      <div className="bg-white md:mt-24" style={{ marginTop: '225px' }}>
   
 </div>
 <div className="mt-4  pl-4 flex justify-end mr-5">

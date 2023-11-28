@@ -73,14 +73,14 @@ import smallrectangle from '../../assets/vsmallrectangle.png'
         return (
         <>
             <Header />
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 " style={{ marginTop: '270px' }}>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 details-container ">
             <div className="mt-10">
   <div className='shadow-lg p-5'>
     <div className="carousel flex items-center justify-center">
       {/* Implement your Carousel component here with the room images */}
-      <img src={roomData.images[0]} alt="Room 1" style={{ width: '54.5%' }} />
+      <img src={roomData.images[0]} alt="Room 1" className='media-larger-image ' />
       <button
-        className="absolute m-4 bg-black text-white px-4 py-2 " style={{position:'absolute' , top:'95.2%',right:"9.7%"}}
+        className="absolute m-4 bg-black text-white px-4 py-2 text-sm md:text-lg gallery-button hidden md:block  " style={{position:'absolute' , top:'87.5%',right:"10.3%"}}
         onClick={() => alert('View Gallery Clicked')} // Add your gallery viewing logic here
       >
         View Gallery(12)
@@ -100,18 +100,18 @@ import smallrectangle from '../../assets/vsmallrectangle.png'
     <div className="mt-3 flex items-center justify-between ">
       {agencyData && (
         <>
-          <h1 className="text-2xl pl-20 font-bold text-red-700 md:text-3xl">HOTEL NAME- UNIQUE TITLE TITLE</h1>
+          <h1 className="text-lg pl-2 md:pl-20 mr-8 md:mr-0 font-bold text-red-700 md:text-3xl">HOTEL NAME- UNIQUE TITLE TITLE</h1>
           <p></p>
         </>
       )}
-      <div className='pr-10'>
-        <button className="bg-gray-300 hover:bg-gray-500 text-black font-bold text-xl py-2 px-6 rounded media-book-now shadow-lg">
-          Book Now
+      <div className='pr-5 md:pr-10 '> 
+        <button className="bg-red-700 hover:bg-red-500 text-white font-bold text-xl py-2 px-6 rounded media-book-now" >
+          Continue Booking
         </button>
       </div>
       
     </div>
-    <div className="flex items-center mt-2 pl-20">
+    <div className="flex items-center mt-2 pl-0 md:pl-20">
       <FontAwesomeIcon icon={faMapMarker} className="h-4 w-6 text-black mr-2" />
       <p>{roomData.location}</p>
       {agencyData && (
@@ -124,7 +124,7 @@ import smallrectangle from '../../assets/vsmallrectangle.png'
   </div>
                    
                     
-                    <div className="mt-4 pl-20">
+  <div className="mt-4 pl-4 md:pl-24">
                     {agencyData && (
                         <div className="mt-4">
                         <p className="text-lg ">{agencyData.description}</p>
@@ -176,7 +176,7 @@ import smallrectangle from '../../assets/vsmallrectangle.png'
 
      <hr className="my-8" />
 
-<div className="mt-8 pl-20">
+<div className="mt-8 pl-0 md:pl-20">
     <h2 className="text-2xl font-bold">Amenities</h2>
     <div className="grid grid-cols-4 gap-4 mt-4 media-amenities">
         <button className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-2 rounded-lg transition duration-300 shadow-md">
@@ -218,19 +218,19 @@ import smallrectangle from '../../assets/vsmallrectangle.png'
 </div>
                     <hr  />
 
-    <div className="flex flex-col mt-5  ">
+                    <div className="flex flex-col mt-5  ">
         <h2 className="text-3xl font-bold mb-8">Reviews and Ratings</h2>
       
-      <div className='flex justify-around items-center'>
+      <div className='flex justify-around items-center flex-col md:flex-row mr-24 md:mr-0'>
       <div className='flex flex-col justify-center'>
-        <h2 className='text-4xl font-bold text-red-700 pt-2'>4.2</h2>
-        <div className='flex items-center'>
+        <h2 className='text-4xl font-bold text-center text-red-700 pt-2'>4.2</h2>
+        <div className='flex items-center justify-center'>
  
     {[...Array(5)].map((_, index) => (
       <FontAwesomeIcon key={index} icon={faStar} className='text-black h-4 w-4 pt-2' />
     ))}
   </div>
-        <p className='text-gray-400 font-semibold text-2xl pt-2'>(148 reviews)</p>
+        <p className='text-gray-400 font-semibold text-xl pt-2'>(148 reviews)</p>
       </div>
 
         <div className="flex flex-col items-end">
@@ -279,7 +279,7 @@ import smallrectangle from '../../assets/vsmallrectangle.png'
     </div>
     <div className="mt-8">
     <div className="border-t border-gray-300 py-4 flex flex-col items-start md:flex md:flex-row">
-        <div className="rounded-full h-14 w-20 overflow-hidden bg-gray-500 flex items-center justify-center">
+        <div className="rounded-full h-14 overflow-hidden bg-gray-500 flex items-center justify-center w-14 md:w-20 ">
             {/* You can add an icon or initials inside the circle if you want */}
         </div>
         <div className="ml-4">
@@ -301,7 +301,7 @@ import smallrectangle from '../../assets/vsmallrectangle.png'
 
 <div className="mt-8">
     <div className="border-t border-gray-300 py-4 flex flex-col items-start md:flex md:flex-row">
-        <div className="rounded-full h-14 w-20 overflow-hidden bg-gray-500 flex items-center justify-center">
+        <div className="rounded-full h-14 overflow-hidden bg-gray-500 flex items-center justify-center w-14 md:w-20">
           
         </div>
         <div className="ml-4">

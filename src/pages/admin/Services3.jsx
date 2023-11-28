@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import ChatBox from '../../components/chatbox/ChatBox';
 import BrandName from '../../components/BrandName/BrandName';
+import { BookOpenIcon, Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/solid';
 
 const Services3 = () => {
     const [activityName, setActivityName] = useState("");
     const [duration, setDuration] = useState("");
     const [timeSlots, setTimeSlots] = useState([]);
+    const [isChatboxVisible, setChatboxVisibility] = useState(false);
+
+    const toggleChatbox = () => {
+      setChatboxVisibility(!isChatboxVisible);
+    };
 
     const handleTimeSlot = (e) => {
         e.preventDefault();
@@ -37,11 +43,11 @@ const Services3 = () => {
     <>
     <BrandName />
      <div className="flex justify-between">
-    <div className="w-2/3 p-8">
+    <div className="w-ful md:w-2/3 p-8">
         <div className="mt-6">
   <h2 className="text-2xl font-bold mb-4">Share some basics about your service/activity</h2>
   <div className="flex flex-col space-y-4">
-    <div className="flex flex-row space-x-4">
+    <div className="flex flex-col md:flex-row space-x-4">
       <input
         type="text"
         placeholder="Activity name"
@@ -99,7 +105,12 @@ const Services3 = () => {
   </div>
 </div>
     </div>
-    <ChatBox />
+    <div className="lg:hidden  cursor-pointer" onClick={toggleChatbox}>
+          <Bars3BottomRightIcon className="h-8 w-8 text-gray-600" />
+        </div>
+
+        {/* ChatBox (conditionally rendered based on visibility) */}
+        {isChatboxVisible && <ChatBox toggleChatbox={toggleChatbox} />}
     </div>
     </>
   )

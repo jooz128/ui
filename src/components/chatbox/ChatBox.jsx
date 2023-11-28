@@ -1,9 +1,14 @@
 import React from 'react';
 
-const ChatBox = () => {
+const ChatBox = ({ toggleChatbox }) => {
   return (
     <>
-      <div className="w-1/3 bg-white p-8 border-l flex flex-col pt-0">
+       <div className="sm:static absolute sm:w-1/3 w-screen sm:h-screen z-20 bg-white p-8 pr-16 md:pr-10 border-l flex flex-col pt-0 h-full">
+      <div className="flex justify-end lg:hidden">
+          <button onClick={toggleChatbox}>
+            <span className="text-gray-600 cursor-pointer">Close</span>
+          </button>
+        </div>
         <h2 className="text-2xl font-bold mb-6 text-center">Get one-to-one guidance</h2>
         {/* 5 Questions */}
         <div className="mb-4 border-b-2 border-gray-300 pb-2 h-full">
