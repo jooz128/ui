@@ -3,7 +3,7 @@ import ChatBox from '../../components/chatbox/ChatBox';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import BrandName from '../../components/BrandName/BrandName';
-import { BookOpenIcon, Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/solid';
+import {Bars3BottomRightIcon } from '@heroicons/react/24/solid';
 
 const SetPrice = () => {
   const [isChatboxVisible, setChatboxVisibility] = useState(false);

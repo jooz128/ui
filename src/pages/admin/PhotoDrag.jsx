@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Image from '../../assets/dragrectanlge.png'
 import ChatBox from '../../components/chatbox/ChatBox';
 import BrandName from '../../components/BrandName/BrandName';
-import { BookOpenIcon, Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/solid';
+import {  Bars3BottomRightIcon } from '@heroicons/react/24/solid';
 
 const ReorderPage = () => {
   const [isChatboxVisible, setChatboxVisibility] = useState(false);

@@ -7,8 +7,6 @@ import Footer from '../../components/footer/Footer';
 import Sidebar from '../../components/sidebar/Sidebar';
 
 const OtherTravellers = () => {
-    const [travelers, setTravelers] = useState([]);
-    const [newTraveler, setNewTraveler] = useState({});
     const [showAddForm, setShowAddForm] = useState(false);
     const [showSidebar, setShowSidebar] = useState(true);
   

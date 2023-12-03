@@ -35,8 +35,7 @@
     "react-switch": "^7.0.0",
     "react-use": "^17.4.0",
     "slick-carousel": "^1.8.1",
-    "swiper": "^11.0.3",
-    "vue-hotel-datepicker": "^4.6.0"
+    "swiper": "^11.0.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

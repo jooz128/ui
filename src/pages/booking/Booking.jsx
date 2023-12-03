@@ -5,12 +5,10 @@ import Rectangle from '../../assets/Rectangle.png'
 import bookingimage from '../../assets/bookingimage.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendar ,faTimes,faFileAlt,faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios';
 
 
 const  Booking =({ onClose }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [selectedDOB,setSelectedDOB]= useState(null);
   const [passengers, setPassengers] = useState([]);
   const [itinerary, setItinerary] = useState(null);
   const [activities, setActivities] = useState([]);
@@ -62,17 +60,6 @@ const  Booking =({ onClose }) => {
     const updatedPassengers = [...passengers];
     updatedPassengers.splice(index, 1);
     setPassengers(updatedPassengers);
-  };
-
-
-
-
-  const handleSlotTimeChange = (activityId, newSlotTime) => {
-    setActivities((prevActivities) =>
-      prevActivities.map((activity) =>
-        activity.activity_id === activityId ? { ...activity, slotTime: newSlotTime } : activity
-      )
-    );
   };
 
   const handleGiftExperienceChange = () => {

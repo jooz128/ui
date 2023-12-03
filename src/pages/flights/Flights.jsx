@@ -1,9 +1,6 @@
-import React, { useContext,useState, useEffect } from 'react';
-import { InputContext } from '../../context/InputContext';
-import { Link } from 'react-router-dom';
+import React, {useState} from 'react';
 import Header from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/Footer';
-import axios from 'axios';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import arrowImage from '../../assets/arrow.png'
@@ -11,15 +8,7 @@ import smallrectangle from '../../assets/flightrectangle.png'
 
 
 const Flights = () => {
-  const {
-    selectedCity,
-    selectedStartDate,
-    selectedEndDate,
-    selectedGuests,
-  } = useContext(InputContext);
   
-
- 
   const [selectedActivityTypes, setSelectedActivityTypes] = useState([]);
  
   const [selectedPriceRanges, setSelectedPriceRanges] = useState([]);

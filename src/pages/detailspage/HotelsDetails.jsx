@@ -3,26 +3,20 @@ import axios from 'axios';
 import image1 from '../../assets/details1.png';
 import image2 from '../../assets/details2.png';
 import image3 from '../../assets/details3.png';
-import smallslided from '../../assets/topactivities.png'
-import calendar from '../../assets/calendar.png'
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import Header from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/Footer';
 import otheractivity from '../../assets/otheractivities.png'
 import map from '../../assets/map.png'
 import map2 from '../../assets/map2.png'
 import { Link } from 'react-router-dom';
-import rectangle from '../../assets/Rectangle.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarker,faStar } from '@fortawesome/free-solid-svg-icons';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
-import { faTimes,faBookmark,faShare,faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import smallrectangle from '../../assets/vsmallrectangle.png'
 
 
     const HotelsDetailsPage = () => {
-        const [showExperience, setShowExperience] = useState(true);
-        const [selectedImages, setSelectedImages] = useState([]);
         const [agencyData, setAgencyData] = useState(null); 
 
      

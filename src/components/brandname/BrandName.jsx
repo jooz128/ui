@@ -9,7 +9,7 @@ const BrandName = () => {
       alt="Logo"
       className="w-12 h-12 border rounded-full object-contain"
     />
-      <span className="text-lg font-bold">Your Name</span>  {/* Replace with your actual name */}
+      <span className="text-lg font-bold">Your Name</span>
     </div>
   </div>
   )

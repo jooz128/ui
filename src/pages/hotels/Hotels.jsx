@@ -6,7 +6,6 @@ import Footer from '../../components/footer/Footer';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 
 const Hotels = () => {
@@ -26,7 +25,7 @@ const Hotels = () => {
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
   const [selectedActivityNames, setSelectedActivityNames] = useState([]);
-const [activityNames, setActivityNames] = useState([]);
+  const [activityNames, setActivityNames] = useState([]);
 
   const handleMinPriceChange = (event) => {
     setMinPrice(event.target.value);
@@ -34,15 +33,6 @@ const [activityNames, setActivityNames] = useState([]);
 
   const handleMaxPriceChange = (event) => {
     setMaxPrice(event.target.value);
-  };
-
-  const handleActivityNameChange = (event) => {
-    const { value, checked } = event.target;
-    if (checked) {
-      setSelectedActivityNames([...selectedActivityNames, value]);
-    } else {
-      setSelectedActivityNames(selectedActivityNames.filter((name) => name !== value));
-    }
   };
   const sortActivities = () => {
     if (selectedSortOption === 'price_low_to_high') {
@@ -122,16 +112,7 @@ const [activityNames, setActivityNames] = useState([]);
       console.error('Error fetching activities with price filter:', error);
     }
   };
- 
-  
-  const handleActivityTypeChange = (event) => {
-    const { value, checked } = event.target;
-    if (checked) {
-      setSelectedActivityTypes([...selectedActivityTypes, value]);
-    } else {
-      setSelectedActivityTypes(selectedActivityTypes.filter((type) => type !== value));
-    }
-  };
+
 
   const handlePriceRangeChange = (event) => {
     const { value, checked } = event.target;

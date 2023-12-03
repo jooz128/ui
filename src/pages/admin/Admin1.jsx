@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import ChatBox from '../../components/chatbox/ChatBox';
 import BrandName from '../../components/BrandName/BrandName';
-import { BookOpenIcon, Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/solid';
+import { Bars3BottomRightIcon,  } from '@heroicons/react/24/solid';
 const GetStarted = () => {
   const [isChatboxVisible, setChatboxVisibility] = useState(false);
+ 
 
   const toggleChatbox = () => {
     setChatboxVisibility(!isChatboxVisible);
@@ -11,7 +12,7 @@ const GetStarted = () => {
   return (
     <>
     <BrandName />
-    <div className="flex justify-between p-8 pt-0 ">
+    < div className="flex justify-between p-8 pt-0 ">
       {/* Left Side - Main Content */}
       <div className="w-full md:w-2/3 p-8">
         {/* Heading */}
@@ -66,6 +67,7 @@ const GetStarted = () => {
 
         {/* ChatBox (conditionally rendered based on visibility) */}
         {isChatboxVisible && <ChatBox toggleChatbox={toggleChatbox} />}
+      
     </div>
     </>
   );
